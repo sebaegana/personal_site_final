@@ -3,25 +3,26 @@ bio: My research interests include distributed robotics, mobile computing and pr
   matter.
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
+  - course: Magíster en Finanzas
+    institution: Universidad de Chile
+    year: 2020
+  - course: Ingeniero Comercial
+    institution: Universidad Santo Tomás
+    year: 2017
+  - course: Licenciado en Filosofía
+    institution: Universidad Alberto Hurtado
     year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
 email: ""
 highlight_name: false
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Análisis de datos
+- Finanzas
+- Economía
+- Programación
 organizations:
-- name: Stanford University
-  url: https://www.stanford.edu/
-role: Professor of Artificial Intelligence
+- name: Universidad Santo Tomás - Facultad de Economía y Negocios
+  url: https://www.ust.cl/facultades-y-carreras/facultades/facultad-de-economia-y-negocios/
+role: Coordinador de Pregrado
 social:
 - icon: envelope
   icon_pack: fas
@@ -31,18 +32,18 @@ social:
   icon: twitter
   icon_pack: fab
   label: Follow me on Twitter
-  link: https://twitter.com/GeorgeCushen
+  link: https://twitter.com/sebaeganan
 - icon: graduation-cap
   icon_pack: fas
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://scholar.google.co.uk/citations?hl=es&user=curBunoAAAAJ
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/sebaegana
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/
+  link: https://www.linkedin.com/in/sebastian-egana-santibanez/
 superuser: true
-title: Nelson Bighetti
+title: Sebastián Egaña Santibáñez
 ---
 
 Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
