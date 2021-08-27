@@ -7,11 +7,13 @@ library(blogdown)
 blogdown::serve_site()
 blogdown:::preview_site()
 
+stop_server()
+
 blogdown::new_post(title = "Hi Hugo", 
                    ext = '.Rmarkdown', 
                    subdir = "post")
 
-blogdown::build_site()
+blogdown::build_site(local = TRUE)
 
 # blogdown::config_Rprofile() 
 # 
