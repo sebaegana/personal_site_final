@@ -32,7 +32,7 @@ social:
   icon: twitter
   icon_pack: fab
   label: Follow me on Twitter
-  link: https://twitter.com/sebaeganan
+  link: https://twitter.com/sebaegana
 - icon: graduation-cap
   icon_pack: fas
   link: https://scholar.google.co.uk/citations?hl=es&user=curBunoAAAAJ
