@@ -11,6 +11,8 @@ blogdown::new_post(title = "Hi Hugo",
                    ext = '.Rmarkdown', 
                    subdir = "post")
 
+blogdown::build_site()
+
 # blogdown::config_Rprofile() 
 # 
 # file.edit(".gitignore")
