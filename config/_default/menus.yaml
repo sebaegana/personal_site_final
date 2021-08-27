@@ -7,10 +7,7 @@ main:
   - name: Docencia
     url: docencia/
     weight: 10
-  - name: Courses
-    url: courses/
-    weight: 20
   - name: Contact
     url: '#contact'
-    weight: 30
+    weight: 20
 
