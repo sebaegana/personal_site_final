@@ -4,7 +4,7 @@ header:
   image: ""
 title: Docencia
 type: page
-view: 2
+view: 1
 ---
 
 I teach the following courses:

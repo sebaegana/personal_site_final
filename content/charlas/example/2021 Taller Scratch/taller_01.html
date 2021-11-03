@@ -1,0 +1,221 @@
+---
+title: "Taller: Programación básica en Scratch"
+subtitle: ""
+author: "Sebastián Egaña Santibáñez"
+institute: "Facultad de Economía y Negocios, UST"
+date: "2021/08/25 (updated: 2021-11-03)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/clipboard/clipboard.min.js"></script>
+<link href="/rmarkdown-libs/shareon/shareon.min.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/shareon/shareon.min.js"></script>
+<link href="/rmarkdown-libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/xaringanExtra-shareagain/shareagain.js"></script>
+<link href="/rmarkdown-libs/countdown/countdown.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/countdown/countdown.js"></script>
+
+
+<p>background-image: url(uno_fciencia.png)
+background-size: contain</p>
+<p>class: title-slide-custom, inverse, center, middle</p>
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 200px;
+height: 300px;
+z-index: 0;
+background-image: url(logo_ust.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+<style>.shareagain-bar {
+--shareagain-foreground: rgb(255, 255, 255);
+--shareagain-background: rgba(0, 0, 0, 0.5);
+--shareagain-twitter: none;
+--shareagain-facebook: none;
+--shareagain-linkedin: none;
+--shareagain-pinterest: none;
+--shareagain-pocket: none;
+--shareagain-reddit: none;
+}</style>
+<hr />
+<p>class: left, middle</p>
+<div id="quién-soy-yo" class="section level1">
+<h1>¿Quién soy yo?</h1>
+<ul>
+<li>Licenciado en Filosofía - Universidad Alberto Hurtado</li>
+<li>Ingeniero Comercial - Universidad Santo Tomás</li>
+<li>Magíster en Finanzas - Universidad de Chile</li>
+</ul>
+<p>Coordinador de pregrado de la Facultad de Economía y Negocios de la Universidad Santo Tomás.</p>
+<p>En general me he desempeñado como analista de datos y mi trabajo ha involucrado conocimientos en control de gestión, finanzas y economía, como también en programación y bases de datos.</p>
+<p><a href="mailto:segana@fen.uchile.cl">
+.white[<svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M440 6.5L24 246.4c-34.4 19.9-31.1 70.8 5.7 85.9L144 379.6V464c0 46.4 59.2 65.5 86.6 28.6l43.8-59.1 111.9 46.2c5.9 2.4 12.1 3.6 18.3 3.6 8.2 0 16.3-2.1 23.6-6.2 12.8-7.2 21.6-20 23.9-34.5l59.4-387.2c6.1-40.1-36.9-68.8-71.5-48.9zM192 464v-64.6l36.6 15.1L192 464zm212.6-28.7l-153.8-63.5L391 169.5c10.7-15.5-9.5-33.5-23.7-21.2L155.8 332.6 48 288 464 48l-59.4 387.3z"></path></svg> <a href="mailto:segana@fen.uchile.cl" class="email">segana@fen.uchile.cl</a>]
+</a></p>
+<p><a href="https://segana.netlify.app">
+.white[<svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path></svg> segana.netlify.app]
+</a></p>
+<p><a href="https://github.com/sebaegana">
+.white<span class="citation">[&lt;svg viewBox="0 0 496 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt; &lt;path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"&gt;&lt;/path&gt;&lt;/svg&gt; @sebaegana]</span>
+</a></p>
+<p><a href="https://www.linkedin.com/in/sebastian-egana-santibanez/">
+.white[<svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg> Sebastián Egaña Santibáñez]
+</a></p>
+<p><a href="https://open.spotify.com/show/3QAGjNWQvpG2Tqw3tPXM6X?si=deca03189d824cc2">
+.white[<svg viewBox="0 0 496 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"></path></svg> Podcast Inversionista Millenial]
+</a></p>
+<hr />
+<p>class: left, middle</p>
+</div>
+<div id="qué-hago-en-mi-tiempo-libre" class="section level1">
+<h1>¿Qué hago en mi tiempo libre?</h1>
+<ul>
+<li>Leo cosas, veo anime y series.</li>
+<li>Juego LOL y Genshin impact:</li>
+</ul>
+<p><a href="https://las.op.gg/summoner/userName=segana">Perfil en op.gg</a></p>
+<div align="center">
+<p><img src="genshin_meme.jpg" style="width: 40%" /></p>
+</div>
+<table style="width:6%;">
+<colgroup>
+<col width="5%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>class: left, middle</td>
+</tr>
+<tr class="even">
+<td># ¿Que harémos hoy?</td>
+</tr>
+<tr class="odd">
+<td>- Hablaremos un poco sobre la programación, y su relación los datos (10 minutos)</td>
+</tr>
+<tr class="even">
+<td>- Nos introduciremos en la programación en base a bloques usando Scratch (30 minutos)</td>
+</tr>
+<tr class="odd">
+<td>- Desarrollaremos un ejercicio utilizando Scratch (15 minutos)</td>
+</tr>
+</tbody>
+</table>
+<p>class: inverse, center, middle</p>
+</div>
+<div id="programación-como-una-herramienta-transversal" class="section level1">
+<h1>Programación como una herramienta transversal</h1>
+<table style="width:6%;">
+<colgroup>
+<col width="5%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>class: left, middle</td>
+</tr>
+<tr class="even">
+<td># Programación y datos</td>
+</tr>
+<tr class="odd">
+<td>- Relevancia actual de los datos; conceptos como “Big data”.</td>
+</tr>
+<tr class="even">
+<td>- Necesidad de personas que puedan procesar dichos datos.</td>
+</tr>
+<tr class="odd">
+<td>- Volumenes grandes de datos, necesitan de herramientas que conllevan programar.</td>
+</tr>
+<tr class="even">
+<td>- Por ejemplo, una hoja de Excel solo puede contener 1.048.576 filas y 16.384 columnas.</td>
+</tr>
+</tbody>
+</table>
+<p>class: left, middle</p>
+</div>
+<div id="algunos-datos" class="section level1">
+<h1>Algunos datos</h1>
+<div id="section" class="section level2">
+<h2><img src="world-of-data.jpg" /></h2>
+<p>class: left, middle</p>
+</div>
+</div>
+<div id="sobre-la-utilización-de-redes-sociales" class="section level1">
+<h1>Sobre la utilización de redes sociales</h1>
+<p><img src="users.png" /></p>
+<table style="width:6%;">
+<colgroup>
+<col width="5%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>class: inverse, center, middle</td>
+</tr>
+<tr class="even">
+<td># Ahora, vamos a Scratch</td>
+</tr>
+<tr class="odd">
+<td><code>{=html} &lt;div class="countdown" id="timer_6182010e" style="right:0;bottom:0;" data-warnwhen="0"&gt; &lt;code class="countdown-time"&gt;&lt;span class="countdown-digits minutes"&gt;30&lt;/span&gt;&lt;span class="countdown-digits colon"&gt;:&lt;/span&gt;&lt;span class="countdown-digits seconds"&gt;00&lt;/span&gt;&lt;/code&gt; &lt;/div&gt;</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="enlaces" class="section level1">
+<h1>Enlaces</h1>
+<ul>
+<li><p>Página de Scratch: <a href="https://scratch.mit.edu">https://scratch.mit.edu</a></p></li>
+<li><p>Trabajo 1: <a href="https://scratch.mit.edu/projects/563645138">gatito</a></p></li>
+<li><p>Trabajo 2: <a href="https://scratch.mit.edu/projects/563616446">figuras</a></p></li>
+<li><p>Mejora de trabajo 1: <a href="https://scratch.mit.edu/projects/557637426">dinosaurio</a></p></li>
+</ul>
+<hr />
+<p>class: inverse, center, middle</p>
+</div>
+<div id="ahora-es-su-turno-de-trabajar-en-scratch" class="section level1">
+<h1>Ahora es su turno de trabajar en Scratch</h1>
+<div class="countdown" id="timer_618201d7" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+<hr />
+<p>class: left, middle</p>
+</div>
+<div id="trabajo-personal" class="section level1">
+<h1>Trabajo personal</h1>
+<ul>
+<li>Cree un conversación entre dos personajes</li>
+</ul>
+</div>
+<div id="solución" class="section level1">
+<h1>Solución</h1>
+<ul>
+<li>Conversación: <a href="https://scratch.mit.edu/projects/557619873">dinosaurio_conversa</a></li>
+</ul>
+</div>

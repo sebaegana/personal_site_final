@@ -1,0 +1,183 @@
+---
+title: "Taller: Programación básica en Scratch"
+subtitle: ""
+author: "Sebastián Egaña Santibáñez"
+institute: "Facultad de Economía y Negocios, UST"
+date: "2021/08/25 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+background-image: url(uno_fciencia.png)
+background-size: contain
+
+class: title-slide-custom, inverse, center, middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(countdown)
+library(icons) 
+library(cowplot)
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "logo_ust.png",
+  width = "200px",
+  height = "300px",
+)
+```
+
+```{r share-again, echo=FALSE}
+xaringanExtra::use_share_again()
+```
+
+```{r style-share-again, echo=FALSE}
+xaringanExtra::style_share_again(
+  share_buttons = "none"
+)
+```
+
+---
+
+class: left, middle
+
+# ¿Quién soy yo?
+
+- Licenciado en Filosofía - Universidad Alberto Hurtado
+- Ingeniero Comercial - Universidad Santo Tomás
+- Magíster en Finanzas - Universidad de Chile
+
+Coordinador de pregrado de la Facultad de Economía y Negocios de la Universidad Santo Tomás. 
+
+En general me he desempeñado como analista de datos y mi trabajo ha involucrado conocimientos en control de gestión, finanzas y economía, como también en programación y bases de datos.  
+
+```{r icon-chunk, echo=FALSE, eval=FALSE}
+fontawesome("rocket", style = "solid") # equivalent to icons::fontawesome$solid$rocket
+```
+
+<a href="mailto:segana@fen.uchile.cl">
+.white[`r icons::fontawesome("paper-plane")` segana@fen.uchile.cl]
+</a>
+
+<a href="https://segana.netlify.app">
+.white[`r icons::fontawesome("link")` segana.netlify.app]
+</a>
+
+<a href="https://github.com/sebaegana">
+.white[`r icons::fontawesome("github")` @sebaegana]
+</a>
+
+<a href="https://www.linkedin.com/in/sebastian-egana-santibanez/">
+.white[`r fontawesome$brands$linkedin` Sebastián Egaña Santibáñez]
+</a>
+
+<a href="https://open.spotify.com/show/3QAGjNWQvpG2Tqw3tPXM6X?si=deca03189d824cc2">
+.white[`r fontawesome$brands$spotify` Podcast Inversionista Millenial]
+</a>
+
+---
+class: left, middle
+
+# ¿Qué hago en mi tiempo libre?
+
+- Leo cosas, veo anime y series.
+- Juego LOL y Genshin impact: 
+
+[Perfil en op.gg](https://las.op.gg/summoner/userName=segana) 
+
+<div align='center'>
+<img src="genshin_meme.jpg" style="width: 40%" />
+</div>
+
+---
+class: left, middle
+
+# ¿Que harémos hoy?
+
+- Hablaremos un poco sobre la programación, y su relación los datos (10 minutos)
+
+- Nos introduciremos en la programación en base a bloques usando Scratch (30 minutos)
+
+- Desarrollaremos un ejercicio utilizando Scratch (15 minutos)
+
+---
+class: inverse, center, middle
+
+# Programación como una herramienta transversal
+
+---
+class: left, middle
+
+# Programación y datos
+
+- Relevancia actual de los datos; conceptos como "Big data".
+
+- Necesidad de personas que puedan procesar dichos datos.
+
+- Volumenes grandes de datos, necesitan de herramientas que conllevan programar.
+
+- Por ejemplo, una hoja de Excel solo puede contener 1.048.576 filas y 16.384 columnas. 
+
+---
+class: left, middle
+
+# Algunos datos
+
+![](world-of-data.jpg)
+---
+class: left, middle
+
+# Sobre la utilización de redes sociales
+
+![](users.png)
+
+---
+class: inverse, center, middle
+
+# Ahora, vamos a Scratch
+
+```{r, echo=FALSE}
+library(countdown)
+
+countdown(minutes = 30, seconds = 00)
+```
+
+---
+
+# Enlaces
+
+- Página de Scratch: [https://scratch.mit.edu](https://scratch.mit.edu)
+
+- Trabajo 1: [gatito](https://scratch.mit.edu/projects/563645138)
+
+- Trabajo 2: [figuras](https://scratch.mit.edu/projects/563616446)
+
+- Mejora de trabajo 1: [dinosaurio](https://scratch.mit.edu/projects/557637426)
+
+---
+
+class: inverse, center, middle
+
+# Ahora es su turno de trabajar en Scratch
+
+```{r, echo=FALSE}
+library(countdown)
+
+countdown(minutes = 15, seconds = 00)
+```
+
+---
+class: left, middle
+
+# Trabajo personal
+
+- Cree un conversación entre dos personajes
+
+# Solución
+
+- Conversación: [dinosaurio_conversa](https://scratch.mit.edu/projects/557619873)

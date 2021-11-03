@@ -2,9 +2,9 @@
 header:
   caption: ""
   image: ""
-title: Docencia
+title: Charlas
 type: page
 view: 2
 ---
 
-I teach the following courses:
+Some of my recent talks
