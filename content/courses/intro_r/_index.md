@@ -1,7 +1,7 @@
 ---
 date: "2021-01-24"
-linkTitle: Data Science
-summary: An example of using Wowchemy's Book layout for publishing online courses.
+linkTitle: Introducción a R
+summary: Curso orientado a estudiantes y egresados
 title: "\U0001F4CA Introducción a la programación en R"
 type: book
 ---
