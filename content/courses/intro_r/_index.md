@@ -6,7 +6,7 @@ title: "\U0001F4CA Introducción a la programación en R"
 type: book
 ---
 
-{{< figure src="feauted.jpg" >}}
+{{< figure src="intro_r.png" >}}
 
 {{< toc hide_on="xl" >}}
 
