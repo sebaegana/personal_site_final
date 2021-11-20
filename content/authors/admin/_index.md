@@ -36,7 +36,9 @@ social:
 - icon: graduation-cap
   icon_pack: fas
   link: https://scholar.google.co.uk/citations?hl=es&user=curBunoAAAAJ
-- icon: github
+- display:
+    header: true
+  icon: github
   icon_pack: fab
   link: https://github.com/sebaegana
 - icon: linkedin
