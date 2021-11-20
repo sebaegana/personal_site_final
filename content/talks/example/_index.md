@@ -10,6 +10,6 @@ type: book
 
 {{< toc hide_on="xl" >}}
 
-## Presentación
+## Slide
 
-- [Enlace acá]("https://angry-ptolemy-9636b2.netlify.app/")
+- [Link]("https://angry-ptolemy-9636b2.netlify.app/")
