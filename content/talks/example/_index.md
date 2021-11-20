@@ -12,4 +12,4 @@ type: book
 
 ## Presentación
 
-- [Enlace acá]("https://angry-ptolemy-9636b2.netlify.app")
+- [Enlace acá]("https://angry-ptolemy-9636b2.netlify.app/")

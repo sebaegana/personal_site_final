@@ -10,8 +10,8 @@ type: book
 
 {{< toc hide_on="xl" >}}
 
-## Enlaces del curso
+## Course links
 
-Página del curso en Notion:[Enlace acá](https://segana.notion.site/Curso-Introductorio-a-la-programaci-n-en-R-3481b6f07adb41a08f1958058ea8850e)
+Web page in Notion:[Enlace acá](https://segana.notion.site/Curso-Introductorio-a-la-programaci-n-en-R-3481b6f07adb41a08f1958058ea8850e)
 
 
