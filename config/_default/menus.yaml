@@ -10,7 +10,10 @@ main:
   - name: Talks
     url: talks/
     weight: 20
+  - name: Data Projects
+    url: data_projects/
+    weight: 30
   - name: Contact
     url: '#contact'
-    weight: 20
+    weight: 40
 
