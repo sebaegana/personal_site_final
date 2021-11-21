@@ -2,7 +2,7 @@
 header:
   caption: ""
   image: ""
-title: Charlas
+title: Data Projects
 type: page
 view: 2
 ---
