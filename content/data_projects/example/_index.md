@@ -1,5 +1,5 @@
 ---
-date: "`r Sys.Date()`"
+date: "2021-10-23"
 linkTitle: Empresas del Indice de precios selectivos
 summary: Empresas que han compuesto el IPSA desde el 2000 al 2020
 title: "Empresas del IPSA"
