@@ -1,8 +1,11 @@
 ---
-bio: My research interests include distributed robotics, mobile computing and programmable
+bio: 
   matter.
 education:
   courses:
+  - course: Diplomado en Ciencias de Datos
+    institution: Universidad del Desarrollo
+    year: 2022
   - course: Magíster en Finanzas
     institution: Universidad de Chile
     year: 2020
@@ -52,4 +55,4 @@ title: Sebastián Egaña Santibáñez
 
 Entusiasta de la programación y de las ciencias de datos, me desempeño principalmente como analista en control de gestión y finanzas.
 
-{{< icon name="download" pack="fas" >}} Descarga mi {{< staticref "uploads/cv_sebastian_egana.pdf" "newtab" >}}cv{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Descarga mi {{< staticref "uploads/cv_sebastian_egana_20211118.pdf" "newtab" >}}cv{{< /staticref >}}.
