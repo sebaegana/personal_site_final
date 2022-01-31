@@ -130,6 +130,14 @@ The variance of the distribution is $\sigma^{2}$.
     <item>
       <title>Hi Hugo</title>
       <link>https://segana.netlify.app/post/hi-hugo/</link>
+      <pubDate>Tue, 02 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://segana.netlify.app/post/hi-hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hi Hugo</title>
+      <link>https://segana.netlify.app/post/hi-hugo/</link>
       <pubDate>Wed, 25 Aug 2021 00:00:00 +0000</pubDate>
       <guid>https://segana.netlify.app/post/hi-hugo/</guid>
       <description>&lt;p&gt;Bla bla&lt;/p&gt;
@@ -283,7 +291,7 @@ data.head()
 &lt;p&gt;Demo:&lt;/p&gt;
 
 
-&lt;div id=&#34;chart-875964132&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-254138679&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   (function() {
     let a = setInterval( function() {
@@ -293,7 +301,7 @@ data.head()
       clearInterval( a );
 
       Plotly.d3.json(&#34;./line-chart.json&#34;, function(chart) {
-        Plotly.plot(&#39;chart-875964132&#39;, chart.data, chart.layout, {responsive: true});
+        Plotly.plot(&#39;chart-254138679&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();
@@ -649,13 +657,13 @@ $$&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Press &lt;code&gt;Space&lt;/code&gt; to play!&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;fragment &#34; &gt;
-One
+One 
 &lt;/span&gt;
 &lt;span class=&#34;fragment &#34; &gt;
-&lt;strong&gt;Two&lt;/strong&gt;
+&lt;strong&gt;Two&lt;/strong&gt; 
 &lt;/span&gt;
 &lt;span class=&#34;fragment &#34; &gt;
-Three
+Three 
 &lt;/span&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;A fragment can accept two optional parameters:&lt;/p&gt;
@@ -723,24 +731,6 @@ Three
 &lt;h1 id=&#34;questions&#34;&gt;Questions?&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/wowchemy/wowchemy-hugo-modules/discussions&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ask&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://wowchemy.com/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Privacy Policy</title>
-      <link>https://segana.netlify.app/privacy/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
-      <guid>https://segana.netlify.app/privacy/</guid>
-      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Terms</title>
-      <link>https://segana.netlify.app/terms/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
-      <guid>https://segana.netlify.app/terms/</guid>
-      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
 </description>
     </item>
     

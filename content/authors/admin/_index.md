@@ -56,3 +56,9 @@ title: Sebastián Egaña Santibáñez
 Entusiasta de la programación y de las ciencias de datos, me desempeño principalmente como analista en control de gestión y finanzas.
 
 {{< icon name="download" pack="fas" >}} Descarga mi {{< staticref "uploads/cv_sebastian_egana_20211118.pdf" "newtab" >}}cv{{< /staticref >}}.
+
+Creación: **27-08-2021**
+
+Actualización: **<script> document.write(new Date().toLocaleDateString()); </script>**
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsegana.netlify.app&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)

@@ -6,6 +6,8 @@ library(blogdown)
 
 blogdown::serve_site()
 blogdown:::preview_site()
+blogdown::hugo_build()
+
 
 stop_server()
 
