@@ -1,7 +1,7 @@
 if (!requireNamespace("remotes")) install.packages("remotes")
 library(blogdown)
 
-#remotes::install_github("rstudio/blogdown")
+# remotes::install_github("rstudio/blogdown")
 # new_site(theme = "wowchemy/starter-academic")
 
 blogdown::serve_site()
