@@ -14,6 +14,7 @@ type: book
 
 ## Course links
 
-{{< staticref "uploads/ust_analisisdedatos_012021/ICO_187_ANÁLISIS_DE_DATOS.pdf" "newtab" >}}Programa{{< /staticref >}}
+### {{< staticref "uploads/ust_analisisdedatos_012021/ICO_187_ANÁLISIS_DE_DATOS.pdf" "newtab" >}}Programa{{< /staticref >}}
 
-{{< staticref "uploads/ust_analisisdedatos_012021/clase_06.pdf" "newtab" >}}Clase 06{{< /staticref >}}
+1. {{< staticref "uploads/ust_analisisdedatos_012021/clase_06.pdf" "newtab" >}}Clase 06{{< /staticref >}}
+2. {{< staticref "uploads/ust_analisisdedatos_012021/clase_06.rmd" "newtab" >}}Clase 06{{< /staticref >}}
