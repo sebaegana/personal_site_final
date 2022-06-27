@@ -6,7 +6,7 @@ title: "\U0001F4C8 ICO-187 Análisis de datos"
 type: book
 ---
 
-{{< figure src="intro_r.jpg" >}}
+{{< figure src="featured.jpg" >}}
 
 
 {{< toc hide_on="xl" >}}
