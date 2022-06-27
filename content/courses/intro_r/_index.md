@@ -1,14 +1,16 @@
 ---
 date: "2021-01-24"
 linkTitle: Introducción a R
-summary: Curso orientado a estudiantes y egresados
-title: "\U0001F4CA Introducción a la programación en R"
+summary: Introductory course to R
+title: "\U0001F4CA Introducción a R"
 type: book
 ---
 
 {{< figure src="intro_r.jpg" >}}
 
+<!---
 {{< toc hide_on="xl" >}}
+-->
 
 ## Course links
 

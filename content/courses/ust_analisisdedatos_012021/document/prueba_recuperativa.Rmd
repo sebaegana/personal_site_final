@@ -1,0 +1,91 @@
+---
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{svg}
+  - \usepackage{attachfile}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{pdflscape}
+title: |
+  ![](logo_fen.jpg){width=2in}  
+  ICO 187 ANÁLISIS DE DATOS
+author: "Prueba Recuperativa"
+year: 2021
+prof: "Sebastián Egaña"
+#due: "martes 04 de mayo del 2021"
+# submit: "engin604assignments@gmail.com"
+# page: "5 páginas"
+# bibliography: "latex/references.bib"
+# biblio-style: "acm"
+link-citations: yes
+citecolor: blue
+urlcolor: blue
+linkcolor: blue
+geometry: margin=0.75in
+fontsize: 10pt
+output: 
+  bookdown::pdf_document2:
+    toc: no
+    highlight: "default"
+    number_sections: yes
+    fig_caption: yes
+    dev: cairo_pdf
+    latex_engine: pdflatex
+    template: "Latex/template.tex"
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Instrucciones generales
+
+1. El informe debe ser entregado en formato word. Considere convertir a formato pdf.  
+
+2. El archivo debe ser enviado al correo del profesor: sebastianeganasa@santotomas.cl, hasta las 23:59 del día de entrega. La fecha de entrega es el **18 de julio del 2021**.
+
+3. La evaluación posee un total de 70 puntos
+
+4. Se tendrá en cuenta la originalidad de su análisis. 
+
+# Desarrollo
+
+Se deberá utilizar el siguiente set de datos:
+
+\begin{flushright}
+\attachfile[icon=Paperclip]{base_prueba.xlsx}Click acá.
+\end{flushright}
+
+Puntos a desarrollar:
+
+1. Tipo de variable en cada set de datos. Considere que ya viene la definición y nombre de cada variable. (10 puntos)
+
+2. Se debe generar una estadística desriptiva de las variables, que nos hablé del número de datos de cada variable, número de grupos, media, varianza, moda, etc. Recuerde que esto depende del tipo de variable. (10 puntos)
+
+3. En caso de ser necesario, se debe especificar si debe realizar algún tipo de corrección a los datos. Esto debe ser justificado de una buena manera. Considere evaluar la existencia de valores anómalos (10 puntos) 
+
+4. Independiente del software que utilice para manipular los datos, debe especificar si genera un modelo de datos (interacción entre tablas) o si realiza una unión de todas ellas (10 puntos).
+
+5. Reporte sobre el set de datos (30 puntos)
+
+Debe desarrollar un reporte relacionado con el set de datos. Para el desarrollo de su reporte, considere la necesidad de introducir el set de datos. Plantee preguntas a ser desarrolladas dentro de su reporte, el análisis y los gráficos relacionados. Concluya en relación a su análisis.
+
+Considere la siguiente estructura para su reporte:
+
+* Introducción al set de datos
+
+  1. Tipo de variables.
+  2. Estadística descriptiva.
+  3. Correciones y valores anómalos.
+  4. Modelo o unión de datos. 
+
+* Desarrollo del reporte.
+
+  1. Preguntas
+  2. Análisis y gráficos
+  3. Conclusiones
+
+Desarrolle solo una o dos preguntas. 
+
+
+

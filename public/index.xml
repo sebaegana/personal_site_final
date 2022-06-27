@@ -128,34 +128,6 @@ The variance of the distribution is $\sigma^{2}$.
     </item>
     
     <item>
-      <title>Hi Hugo</title>
-      <link>https://segana.netlify.app/post/hi-hugo/</link>
-      <pubDate>Tue, 02 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>https://segana.netlify.app/post/hi-hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hi Hugo</title>
-      <link>https://segana.netlify.app/post/hi-hugo/</link>
-      <pubDate>Wed, 25 Aug 2021 00:00:00 +0000</pubDate>
-      <guid>https://segana.netlify.app/post/hi-hugo/</guid>
-      <description>&lt;p&gt;Bla bla&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;summary(Orange)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  Tree       age         circumference  
-##  3:7   Min.   : 118.0   Min.   : 30.0  
-##  1:7   1st Qu.: 484.0   1st Qu.: 65.5  
-##  5:7   Median :1004.0   Median :115.0  
-##  2:7   Mean   : 922.1   Mean   :115.9  
-##  4:7   3rd Qu.:1372.0   3rd Qu.:161.5  
-##        Max.   :1582.0   Max.   :214.0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://segana.netlify.app/post/hi-hugo/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Welcome to Wowchemy, the website builder for Hugo</title>
       <link>https://segana.netlify.app/post/getting-started/</link>
       <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
@@ -291,7 +263,7 @@ data.head()
 &lt;p&gt;Demo:&lt;/p&gt;
 
 
-&lt;div id=&#34;chart-395486172&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-154692873&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   (function() {
     let a = setInterval( function() {
@@ -301,7 +273,7 @@ data.head()
       clearInterval( a );
 
       Plotly.d3.json(&#34;./line-chart.json&#34;, function(chart) {
-        Plotly.plot(&#39;chart-395486172&#39;, chart.data, chart.layout, {responsive: true});
+        Plotly.plot(&#39;chart-154692873&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();

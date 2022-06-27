@@ -1,0 +1,137 @@
+---
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{svg}
+title: |
+  ![](logo_fen.jpg){width=2in}  
+  ICO 187 ANÁLISIS DE DATOS
+author: "Presentación final set de datos"
+year: 2021
+prof: "Sebastián Egaña"
+#due: "martes 04 de mayo del 2021"
+# submit: "engin604assignments@gmail.com"
+# page: "5 páginas"
+# bibliography: "latex/references.bib"
+# biblio-style: "acm"
+link-citations: yes
+citecolor: blue
+urlcolor: blue
+linkcolor: blue
+geometry: margin=0.75in
+fontsize: 10pt
+output: 
+  bookdown::pdf_document2:
+    toc: no
+    highlight: "default"
+    number_sections: yes
+    fig_caption: yes
+    dev: cairo_pdf
+    latex_engine: pdflatex
+    template: "Latex/template.tex"
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Instrucciones generales
+
+1. Se debe realizar una presentación del set de datos elegido en la solemne II. 
+
+2. Se debe enviar una copia de la presentación a realizar al mail del profesor: sebastianeganasa@santotomas.cl, hasta las 23:59 del día anterior a la presentación. 
+
+3. El trabajo debe ser presentado en alguno de los formatos relacionados con Power Bi, sea pbix o pdf. Considerar que el formato pdf pierde la capacidad de generar filtros. 
+
+En términos generales, se debe desarrollar un reporte de datos en Power Bi en base al set de datos elegido. 
+
+La evaluación posee un total de 35 puntos. Dicha evaluación es grupal. No es necesario que todos presenten.
+
+Por último, tiene un tiempo para presentar entre 10 a 15 minutos. 
+
+# Puntos a desarrollar
+
+1. Situación inicial
+
+Se debe describir la situación inicial del reporte de datos; ¿es usted un analista mostrando datos? ¿es un experto describiendo el estado del arte?, etc. 
+
+2. Introducción, Desarrollo y presentación, conclusión. 
+
+Considere la necesidad de introducir el set de datos. Plantee preguntas a ser desarrolladas dentro de sus presentación y análisis.
+
+Concluya en relación a su análisis. 
+
+3. Aspectos vitales para su nota
+
+Considere que todos deben manejar el set de datos al reves y al derecho.
+
+Las respuestas de cada uno influyen en la nota de todos. 
+
+4. Puntos extras
+
+Se valorará la generación de gráficos utilizando lenguaje de programación; esto ya sea copiando los gráficos de R en su presentación en Power Bi o integrando la programación de R en Power Bi. Recuerde que para lo último necesita tener Power Bi, R y RStudio instalado en su computador.
+
+# Pauta de evaluación
+
+Se calificarán las presentaciones, de manera cualitativa a través de la siguiente pauta de apreciación. A continuación, se presentan los niveles de referencia a obtener por apartado. El
+evaluador podrá poner puntajes intermedios.
+
+\begin{center}
+\begin{tabular}{|l|c|}
+	\hline
+	Nivel & Puntaje \\
+	\hline
+	Muy bueno & 7 \\
+	\hline
+	Bueno & 5  \\
+	\hline
+	Básico & 4  \\
+	\hline
+	Deficiente & 3  \\
+	\hline
+	Malo & 1  \\
+	\hline
+\end{tabular}
+\end{center}
+
+Se consdieran los siguientes itéms a ser evaluados:
+
+\begin{center}
+\begin{tabular}{|l|c|}
+	\hline
+	Criterio & Indicador \\
+	\hline
+	Introducción & Introducción y preguntas iniciales \\
+	\hline
+	Desarrollo & Desarrollo de la presentación  \\
+	\hline
+	Conclusión & Conclusión de preguntas iniciales  \\
+	\hline
+	Formalidad & Presentación y lenguaje utilizado  \\
+	\hline
+	Conocimiento de los datos & Respuestas a las preguntas  \\
+	\hline
+\end{tabular}
+\end{center}
+
+Considere bonificación en base a la utilización de programación y gráficos avanzados. 
+
+# Grupos y día de presentación:
+
+Se asume que ya conocen la constitución de sus grupos. Quién no tenga claridad, debe preguntar. 
+
+```{r, message = FALSE, warning=FALSE}
+
+library(dplyr)
+
+grupos_01 <- 1:14
+
+set.seed(2)
+dia <- sample(1:2, 14, replace = TRUE)
+
+data <- as_tibble(cbind(grupos_01, dia)) %>% 
+  mutate(fecha_presentacion = ifelse(dia == 1, "13-07-2021", "15-07-2021"))
+
+knitr::kable(data, format = "latex", booktabs = T)
+
+```

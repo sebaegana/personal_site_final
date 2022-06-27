@@ -1,0 +1,149 @@
+---
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{svg}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{attachfile}
+title: |
+  ![](logo_fen.jpg){width=2in}  
+  ICO 187 ANÁLISIS DE DATOS
+author: "Clase 28: Análisis de datos con R"
+year: 2021
+prof: "Sebastián Egaña"
+# due: "Jueves 11 de Marzo"
+# submit: "engin604assignments@gmail.com"
+# page: "5 páginas"
+# bibliography: "latex/references.bib"
+# biblio-style: "acm"
+link-citations: yes
+citecolor: blue
+urlcolor: blue
+linkcolor: blue
+geometry: margin=0.75in
+fontsize: 10pt
+output: 
+  bookdown::pdf_document2:
+    toc: no
+    highlight: "default"
+    number_sections: yes
+    fig_caption: yes
+    dev: cairo_pdf
+    latex_engine: pdflatex
+    template: "Latex/template.tex"
+always_allow_html: true
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tinytex.verbose = TRUE)
+
+library(readxl)
+library(datamodelr)
+library(tidyverse)
+library("factoextra")
+library(FactoMineR)
+library(cluster)
+library(gridExtra)
+
+data <- read_excel("clase_27.xlsx")
+
+data <- mutate(data, fecha_nacimiento_2 = as.POSIXct(fecha_nacimiento, format = "%d-%m-%Y"))
+
+```
+
+# Clase pasada
+
+## Pipe operator "%>%"
+
+Nos permite indicar aplicar múltiples funciones a un mismo objeto de R sin tener que indicar el objeto en cada función. 
+
+En la clase pasada, vimos la siguiente asignación de elementos a una matriz:
+
+```{r}
+g <- c(0,5,0, 10,8,1,-5,-4,-1)
+
+z <- matrix(g, byrow = FALSE)
+
+```
+
+Lo que usando el pipe operator se escribe de la siguiente manera:
+
+```{r}
+g <- c(0,5,0, 10,8,1,-5,-4,-1)
+
+z <- g %>% 
+  matrix(byrow = FALSE)
+
+```
+
+E incluso de manera más simplificada:
+
+```{r}
+z <- c(0,5,0, 10,8,1,-5,-4,-1) %>% 
+  matrix(byrow = FALSE)
+
+```
+
+Otro ejemplo relacionado. El texto "pi", posee la asignación del valor $\pi$:
+
+```{r}
+pi
+```
+
+Si queremos calcular el coseno del seno de pi utilizando el pipe operator:
+
+```{r}
+pi %>% sin %>% cos
+```
+
+Lo que utilizando una aplicación de funciones clásica corresponde a:
+
+```{r}
+cos(sin(pi))
+```
+
+Último ejemplo; calcular el logaritmo de los siguientes números, diferenciandolos con un retraso, luego obteniendo la exponencial de dicho recultado y redondeandolo.
+
+```{r}
+x <- c(0.109, 0.359, 0.63, 0.996, 0.515, 0.142, 0.017, 0.829, 0.907)
+
+round(exp(diff(log(x))), 1)
+```
+
+Esto utilizando el pipe operator se transforma en:
+
+```{r}
+x %>% log() %>%
+    diff() %>%
+    exp() %>%
+    round(1)
+```
+
+# Fechas Relevantes
+
+\begin{center}
+\begin{tabular}{|c|l|c|c|}
+	\hline
+	Unidad & Evaluación & Ponderación & Fecha \\
+	\hline
+	Unidad I & \sout{Evaluación diagnóstica} & & 25/03/2021 \\
+	\hline
+	& \sout{Evaluación Individual Participación} & (5\%) & 05/04/2021 \\
+	\hline
+	& \sout{Evaluación Grupal} & (15\%) & 27/04/2021 - 04/05/2021 \\
+	\hline
+	& \sout{Evaluación Individual - Sumativa I} & (30\%) & 11/05/2021 \\
+	\hline
+	Unidad II & \sout{Evaluación Grupal} & (15\%) & 20/06/2021 \\
+	\hline
+	& \sout{Evaluación Grupal - Sumativa II} & (15\%) & 04/07/2021 \\
+	\hline
+	Unidad III & Evaluación Formativa & & - \\
+	\hline
+	& Evaluación Grupal Sesión I- Sumativa III & (20\%) & 08/07/2021 \\
+	\hline
+	& Evaluación grupal Sesión II- Sumativa III & (20\%) & 13/07/2021 \\
+	\hline
+\end{tabular}
+\end{center}
+

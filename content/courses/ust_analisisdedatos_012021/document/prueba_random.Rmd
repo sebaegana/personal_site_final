@@ -1,0 +1,140 @@
+---
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{svg}
+  - \usepackage{attachfile}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{pdflscape}
+  - \usepackage{multicol}% Just for this example
+  - \usepackage{filecontents}
+  - \usepackage{catchfile,environ,tikz}
+title: |
+  ![](logo_fen.jpg){width=2in}  
+  ICO 187 ANÁLISIS DE DATOS
+author: "Examen"
+year: 2021
+prof: "Sebastián Egaña"
+#due: "martes 04 de mayo del 2021"
+# submit: "engin604assignments@gmail.com"
+# page: "5 páginas"
+# bibliography: "latex/references.bib"
+# biblio-style: "acm"
+link-citations: yes
+citecolor: blue
+urlcolor: blue
+linkcolor: blue
+geometry: margin=0.75in
+fontsize: 10pt
+documentclass: article
+classoption: answers
+output: 
+  bookdown::pdf_document2:
+    toc: no
+    highlight: "default"
+    number_sections: yes
+    fig_caption: yes
+    dev: cairo_pdf
+    latex_engine: pdflatex
+    template: "Latex/template.tex"
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+\begin{filecontents*}{bankA.tex}
+\begin{questionblock}
+Question 1
+\end{questionblock}
+\begin{questionblock}
+Question 2
+\end{questionblock}
+\begin{questionblock}
+Question 3
+\end{questionblock}
+\begin{questionblock}
+Question 4
+\end{questionblock}
+\begin{questionblock}
+Question 5
+\end{questionblock}
+\begin{questionblock}
+Question 6
+\end{questionblock}
+\begin{questionblock}
+Question 7
+\end{questionblock}
+\begin{questionblock}
+Question 8
+\end{questionblock}
+\begin{questionblock}
+Question 9
+\end{questionblock}
+\begin{questionblock}
+Question 10
+\end{questionblock}
+\end{filecontents*}
+
+\makeatletter% Taken from https://tex.stackexchange.com/q/109619/5764
+\def\declarenumlist#1#2#3{%
+  \expandafter\edef\csname pgfmath@randomlist@#1\endcsname{#3}%
+  \count@\@ne
+  \loop
+    \expandafter\edef
+    \csname pgfmath@randomlist@#1@\the\count@\endcsname
+      {\the\count@}
+    \ifnum\count@<#3\relax
+    \advance\count@\@ne
+  \repeat}
+\def\prunelist#1{%
+  \expandafter\xdef\csname pgfmath@randomlist@#1\endcsname
+          {\the\numexpr\csname pgfmath@randomlist@#1\endcsname-1\relax}
+  \count@\pgfmath@randomtemp 
+  \loop
+    \expandafter\global\expandafter\let
+    \csname pgfmath@randomlist@#1@\the\count@\expandafter\endcsname
+    \csname pgfmath@randomlist@#1@\the\numexpr\count@+1\relax\endcsname
+    \ifnum\count@<\csname pgfmath@randomlist@#1\endcsname\relax
+      \advance\count@\@ne
+  \repeat}
+\makeatother
+
+% Define how each questionblock should be handled
+\newcounter{questionblock}
+\newcounter{totalquestions}
+\NewEnviron{questionblock}{}%
+
+\newcommand{\randomquestionsfrombank}[2]{%
+  \CatchFileDef{\bank}{#1}{}% Read the entire bank of questions into \bank
+  \setcounter{totalquestions}{0}% Reset total questions counters  ***
+  \RenewEnviron{questionblock}{\stepcounter{totalquestions}}% Count every question  ***
+  \bank% Process file  ***
+  \declarenumlist{uniquequestionlist}{1}{\thetotalquestions}% list from 1 to totalquestions inclusive.
+  \setcounter{totalquestions}{#2}% Start the count-down
+  \RenewEnviron{questionblock}{%
+    \stepcounter{questionblock}% Next question
+    \ifnum\value{questionblock}=\randomquestion 
+      \par% Start new paragraph
+      \BODY% Print question
+    \fi
+  }%
+  \foreach \uNiQueQ in {1,...,#2} {% Extract #2 random questions
+    \setcounter{questionblock}{0}% Start fresh with question block counter
+    \pgfmathrandomitem\randomquestion{uniquequestionlist}% Grab random question from list
+    \xdef\randomquestion{\randomquestion}% Make random question available globally
+    \prunelist{uniquequestionlist}% Remove picked item from list
+    \bank% Process file
+  }}
+
+
+
+\begin{multicols}{3}
+  \foreach \x in {1,...,6} {
+    \bigskip
+    \randomquestionsfrombank{bankA.tex}{6}
+  }
+\end{multicols}
+
+

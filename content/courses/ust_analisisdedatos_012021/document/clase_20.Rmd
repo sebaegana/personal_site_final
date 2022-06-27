@@ -1,0 +1,228 @@
+---
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{svg}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{attachfile}
+title: |
+  ![](logo_fen.jpg){width=2in}  
+  ICO 187 ANÁLISIS DE DATOS
+author: "Clase 20: Análisis de clústers en Power Bi y funcionalidad vía web"
+year: 2021
+prof: "Sebastián Egaña"
+# due: "Jueves 11 de Marzo"
+# submit: "engin604assignments@gmail.com"
+# page: "5 páginas"
+# bibliography: "latex/references.bib"
+# biblio-style: "acm"
+link-citations: yes
+citecolor: blue
+urlcolor: blue
+linkcolor: blue
+geometry: margin=0.75in
+fontsize: 10pt
+output: 
+  bookdown::pdf_document2:
+    toc: no
+    highlight: "default"
+    number_sections: yes
+    fig_caption: yes
+    dev: cairo_pdf
+    latex_engine: pdflatex
+    template: "Latex/template.tex"
+always_allow_html: true
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tinytex.verbose = TRUE)
+
+library(readxl)
+library(datamodelr)
+library(tidyverse)
+library("factoextra")
+library(FactoMineR)
+library(cluster)
+library(gridExtra)
+
+data <- read_excel("G:/Mi unidad/Docencia 2020 - 2021/UST - 2021 01 Análisis de Datos/clustering/BIData.xlsx")
+
+```
+
+# Análisis de clústeres
+
+## ¿Qué es un clúster?
+
+Por lo general, el concepto de asocia a la agrupación de empresas que comparten ciertas carácteristicas. Dicho concepto es aplicado también para el contexto del marketing, relacionado con la segmentación de clientes. 
+
+Veamos el siguiente set de datos:
+
+```{r}
+
+utils::View(data)
+
+```
+
+Trabajemos con este set de datos, realizando un análisis de clústeres. 
+
+## Tidy
+
+Se deben realizar ciertas modificaciones para trabajar los datos. Por ejemplo, el algoritmo no trabaja con variables que no sean númericas. Por otra parte, también se limpian variables relacionadas con fechas. 
+
+
+```{r}
+
+data_1 <- data %>% 
+  select(-Date, -Month, -Weekday, - Quarter, -Day_month, -Weeknum, -Year) %>% 
+  mutate(Gender = ifelse(Gender == "F", 1, 0),
+         Education_level = ifelse(Education_level == "Till 10th", 1, 
+                                  ifelse(Education_level == "Till 12th", 2, 
+                                         ifelse(Education_level == "Graduate", 3, 4))),
+         Purpose = ifelse(Purpose == "Home", 1, 
+                          ifelse(Purpose == "Travel", 2, 
+                                 ifelse(Purpose == "Personal", 3, 
+                                        ifelse(Purpose == "Education", 4, 5)))))
+
+```
+
+## Análisis de componentes principales
+
+Por lo general, primero se debe determinar cuales son las variables más relevantes que explican el set de datos. Para esto, se realiza un análisis de componentes principales o principal components analysis. Veamos su implementación: 
+
+```{r}
+
+res.pca <- PCA(data_1,  graph = FALSE)
+
+get_eig(res.pca)
+
+fviz_screeplot(res.pca, addlabels = TRUE, ylim = c(0, 50))
+
+```
+
+A pesar de su complejidad, solo debe entender que dicho análisis intenta explicar la variabilidad del sistema (matriz), y a la vez, establecer cuales variables son las que explican de mejor manera dicha variabilidad. Veamos el siguiente gráfico:
+
+
+```{r}
+fviz_pca_var(res.pca, col.var = "black")
+```
+
+Una versión mejorada: 
+
+```{r}
+fviz_pca_var(res.pca, col.var="contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE # Avoid text overlapping
+)
+```
+
+## Análisis de clústeres
+
+Veamos ahora la manera de construir dichos clústeres en base a los datos. Aplicaremos cuatro distintos algoritmos para evaluar la existencia de 1, 2, 3 o 4 clústeres. 
+
+```{r}
+set.seed(123)
+km.res_1 <- kmeans(data_1, 2, nstart = 25)
+km.res_2 <- kmeans(data_1, 3, nstart = 25)
+km.res_3 <- kmeans(data_1, 4, nstart = 25)
+km.res_4 <- kmeans(data_1, 5, nstart = 25)
+
+```
+
+Graficamos cada caso: 
+
+```{r}
+p1 <- fviz_cluster(km.res_1, geom = "point", data = data_1) + 
+  ggtitle("k = 2")
+p2 <- fviz_cluster(km.res_2, geom = "point",  data = data_1) + 
+  ggtitle("k = 3")
+p3 <- fviz_cluster(km.res_3, geom = "point",  data = data_1) + 
+  ggtitle("k = 4")
+p4 <- fviz_cluster(km.res_4, geom = "point",  data = data_1) + 
+  ggtitle("k = 5")
+
+grid.arrange(p1, p2, p3, p4, nrow = 2)
+```
+
+¿Cuál cree usted que se acomoda mejor a los datos?
+
+## Determinación del número de clústeres
+
+Anteriormente, determinamos el número de clústeres utilizando números predefinidos. Veamos ahora algunos algoritmos que nos pueden ayudar con esto:
+
+```{r}
+set.seed(123)
+fviz_nbclust(data_1, kmeans, method = "wss")
+
+```
+
+Un método distinto:
+
+```{r}
+set.seed(123)
+fviz_nbclust(data_1, kmeans, method = "silhouette")
+```
+
+Al parecer, en ambos casos tenemos evidencia de que 2 es el número correcto. Calculemos dicho caso: 
+
+```{r}
+set.seed(123)
+final <- kmeans(data_1, 2, nstart = 25)
+fviz_cluster(final, data = data_1)
+```
+
+# Análisis de clústeres: Una aplicación en Power Bi
+
+Veamos ahora si se puede replicar algo de lo realizado en el punto anterior dentro de Power Bi. Utilizaremos el mismo set de datos anterior, y nos guiaremos en base al siguiente ejemplo:
+
+
+\href{https://www.pluralsight.com/guides/implement-clustering-in-powerbi}{Enlace acá}
+
+# Cambios en la Planificación diáctica
+
++ Se elimina evaluación formativa
++ Evaluación de participación se une con evaluación grupal. Dicha evaluación será para el 14 de junio.
++ Sumativa II, queda para la misma semana y será individual. Será en base a preguntas de desarrollo, selección múltiple, verdadero o falso, y análisis de casos. 
++ Se debe comenzar a pensar en el posible set de datos a utilizar. Algunas opciones que hay son:
+
+1. Futbol.
+2. Baloncesto.
+3. Kpop.
+4. League of legends.
+5. Análisis de clientes.
+
+En base a dicho set de datos, deberán realizar una propuesta de análisis de datos, lo que corresponderá al 5% de la evaluación de participación de la Unidad III. El procentaje restante, corresponderá a la presentación de su reporte. Todo esto se realizará de manera grupal.  
+
+# Fechas Relevantes
+
+\begin{center}
+\begin{tabular}{|c|l|c|c|}
+	\hline
+	Unidad & Evaluación & Ponderación & Fecha \\
+	\hline
+	Unidad I & \sout{Evaluación diagnóstica} & & 25/03/2021 \\
+	\hline
+	& \sout{Evaluación Individual Participación} & (5\%) & 05/04/2021 \\
+	\hline
+	& \sout{Evaluación Grupal} & (15\%) & 27/04/2021 - 04/05/2021 \\
+	\hline
+	& \sout{Evaluación Individual - Sumativa I} & (30\%) & 11/05/2021 \\
+	\hline
+	Unidad II & \sout{Evaluación Formativa} & & 13/05/2021 \\
+	\hline
+	& \sout{Evaluación Individual Participación} & (5\%) & 27/05/2021 \\
+	\hline
+	& Evaluación Grupal & (15\%) & 14/06/2021 \\
+	\hline
+	& Evaluación Individual - Sumativa II & (15\%) & 17/06/2021 \\
+	\hline
+	Unidad III & Evaluación Formativa & & 22/06/2021 \\
+	\hline
+	& Evaluación Individual Participación & (5\%) & 24/06/2021 \\
+	\hline
+	& Evaluación Individual Sesión I- Sumativa III & (15\%) & 08/07/2021 \\
+	\hline
+	& Evaluación Individual Sesión II- Sumativa III & (15\%) & 13/07/2021 \\
+	\hline
+\end{tabular}
+\end{center}
+

@@ -1,0 +1,213 @@
+---
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{svg}
+title: |
+  ![](logo_fen.jpg){width=2in}  
+  ICO 187 ANÁLISIS DE DATOS
+author: "Clase 06: ¿Qué es análisis de datos?"
+year: 2021
+prof: "Sebastián Egaña"
+# due: "Jueves 11 de Marzo"
+# submit: "engin604assignments@gmail.com"
+# page: "5 páginas"
+# bibliography: "latex/references.bib"
+# biblio-style: "acm"
+link-citations: yes
+citecolor: blue
+urlcolor: blue
+linkcolor: blue
+geometry: margin=0.75in
+fontsize: 10pt
+output: 
+  bookdown::pdf_document2:
+    toc: no
+    highlight: "default"
+    number_sections: yes
+    fig_caption: yes
+    dev: cairo_pdf
+    latex_engine: pdflatex
+    template: "Latex/template.tex"
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introducción
+
+
+# Estimación de la demanda
+
+## Regresión Lineal
+
+En términos simples, una regresión lineal corresponde al intento matemático y estadístico de analizar como un conjunto de datos se adapta o no a un comportamiento lineal, o sea a una relación lineal; ya sea esta relación directa o no. 
+
+
+## ¿Por qué utilizamos esto en proyectos?
+
+Una de las dificultades más relevantes en proyectos, corresponde a la necesidad de poder estimar de manera fidedigna las futuras ventas de nuestro proyecto. Sobre lo mismo, existe una sobre confianza en los modelos matemáticos para dicho tema, pensando en que esto le da mayor sustento a la forma en que estimamos las ventas de nuestro proyecto. 
+
+
+## Un ejemplo relacionado
+
+Se tiene un proyecto para una empresa de exportación, en donde se pretende realizar una estimación del Tipo de cambio nominal (TCN de ahora en adelante). 
+
++ Pregunta ¿por qué podría ser relevante el TCN para un proyecto como este? ¿Existe otro tipo de proyectos en dónde también podría ser relevante?
+
+Para esto, el especialista econométrico plantea que el TCN posee una relación con variables como el precio del cobre (Pcu) y el dolar index (DXY). 
+
++ ¿Cuál es la razón de pensar en que existe una relación entre el TCN y el PCU? ¿Para el DXY?
+
+Intetemos abordar un ejemplo ahora utilizando RStudio. 
+
+## Rstudio
+
+No abordaremos el detalle de las los codígos ahora expuestos, solo para ir introduciendo la programación en el curso. 
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+data <- ejemplo %>% 
+  mutate(year = substring(fecha, 1, 4),
+         ln_tcn = log(TCN),
+         ln_dxy = log(`DXY Index`),
+         ln_pcu = log(Pcu))
+
+data_subset <- data %>% 
+  filter(year >= 2014)
+
+lm(ln_tcn ~ ln_dxy, data = data_subset)
+
+
+
+```
+
+
+
+
+## ¿Cómo analizar una regresión?
+
+¿Cómo analizar una regresión?
+
++ Significancia individual
+
+Por ejemplo para la constante, se evalua la siguiente hipótesis:
+
+Hipótesis Nula o $H_{0}$
+
+$\beta_{1} = 0$
+
+Hipótesis Alternativa o $H_{1}$
+
+$\beta_{1} \neq 0$
+
+Se busca el poder rechazar la hipótesis nula, ¿pero por qué? 
+
+Este proceso se puede realizar de dos maneras (hay más):
+
+- Estadístico calculado
+
+Por ejemplo para el caso de la constante, este valor corresponde a 2,081 según la siguiente fórmula:
+
+$t_{calculado} = \frac{Coeficiente}{\text{error estándar del coeficiente}}$
+
+lo que debe contrastarse con valores de tabla, según el siguiente detalle:
+
+
+$t_{tabla} = t-student_{10\%, n - 1}$
+
+Este valor de probabilidad se evalua generalmente al 10%, al 5% y al 1%, y se le denomina valor significativo. 
+
+- P-Valor
+
+Corresponde a la probabilidad acumulada por el valor t calculado, considerando el espacio desde el estadístico hacia el final o inicio de la distibución.
+
+Se contrasta contra el valor de significancia. 
+
++ Significancia global
+
+Se aplica lo mismo, pero considerando el siguiente test:
+
+Hipótesis Nula o $H_{0}$
+
+$\beta_{2} = \beta_{3}...\beta_{n} = 0$
+
+Hipótesis Alternativa o $H_{1}$
+
+$\beta_{2} = \beta_{3}...\beta_{n} \neq 0$
+
+No se considera la constante, y se considera lo mismo para la significancia individual pero con una distribución F. 
+
++ Bondad del Ajuste
+
+Se relaciona con el valor del R^{2} y R^{2} Ajustado. Nos habla del ajuste del modelo un modelo de tipo lineal. El segundo considera el ajuste por el número de variables independientes. 
+
+# Sobre Excel
+
+Ya hemos visto algunas de las limitantes de Excel para el análisis de datos (filas y columnas), pero hay otros puntos que deben ser abordados de manera particular:
+
++ Visualización: A pesar de tener una gran capacidad de este campo, Excel comienza a tener problemas cuando existen dos o más variables de agrupamiento. Veamos la siguiente imagen:
+
+\begin{center}
+\includegraphics[height=150px]{graph_01.png} \\
+\end{center}
+
+Este problema, R lo soluciona a través de la aplicación de distintos colores a cada grupo:
+
+
+\begin{center}
+\includegraphics[height=200px]{graph_02.png} \\
+\end{center}
+
+Otro tema puede estar relacionado con la inserción de datos, anotaciones dentro de los gráficos.
+
+
+\begin{center}
+\includegraphics[height=200px]{graph_03.png} \\
+\end{center}
+
+Por último, Excel no es propiamente una herramienta desarrollada para generar reportes. Se puede intentar forzarla a esto, o desarrollar en conjunto con Word o Power Point. 
+
+# Importar
+
+En el caso particular de Excel, la importación de datos no es generalmente un problema. Se debe tener en cuenta los tipos de datos que puede leer: txt, csv, xls, xlsx, etc. 
+
+Otro caso corresponde al querer importar datos de bases de datos o desde la web. 
+
+Veamos un pequeño ejemplo, considerando el siguiente link:
+
+[https://www.previred.com/web/previred/indicadores-previsionales](Acá)
+
+Veamos otro ejemplo desde la página del Banco Central:
+
+[https://si3.bcentral.cl/Siete/ES/Siete/Cuadro/CAP_ESTADIST_MACRO/MN_EST_MACRO_IV/PEM_TC](Acá)
+
+La simplicidad de estos ejemplos, no debe confundirlos; por lo general el Webscrapping no es tan fácil; menos en Excel. 
+
+# Ordenar
+
+Se debe intentar realizar comprobaciones de los datos de ser necesario. 
+
++ Comprobar algún calculo realizado, generandolo de manera distinta.
++ Generar una celda que confirme el calculo realizado.
++ Funciones que nos permitan validar un dato, o varios datos. 
+
+
+En la mayoría de los casos, es necesario realizar un reemplazo de múltiples valores a la vez, ¿sabe usted como hacer esto en Excel?
+
+Si no lo sabe, find it!
+
+Por otra parte, dependiendo el tipo de data con la que trabajamos pueden existir valores que se repiten como también valores que no deberían repetirse nunca (dependiendo de la naturaleza de la base de datos).
+
+Por ejemplo, dentro del Censo se maneja el concepto de Hogar e Individuo, ¿cuál de los dos debería tener un identificador único? ¿nuestro análisis será en base al hogar o al individuo?
+
+# Visualización
+
+La visualización, es en parte un arte y en parte una ciencia (Wilke, 2019).
+
+La relevancia de la visualización se genera como una aproximación visual resumida a los datos. El problema, es que no todas las visualizaciones son buenas, en otras palabras no todos los gráficos son construidos de manera correcta. 
+
+Un buen gráfico no responde necesariamente sobre el ¿cómo se ve?, sino que debe responder a la necesidad de ¿quién lo ve? y ¿por qué lo ve?
+

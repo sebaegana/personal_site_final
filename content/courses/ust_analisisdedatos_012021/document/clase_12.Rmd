@@ -1,0 +1,213 @@
+---
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{svg}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{attachfile}
+title: |
+  ![](logo_fen.jpg){width=2in}  
+  ICO 187 ANÁLISIS DE DATOS
+author: "Clase 12: Manipulación e integración de datos en Excel"
+year: 2021
+prof: "Sebastián Egaña"
+# due: "Jueves 11 de Marzo"
+# submit: "engin604assignments@gmail.com"
+# page: "5 páginas"
+# bibliography: "latex/references.bib"
+# biblio-style: "acm"
+link-citations: yes
+citecolor: blue
+urlcolor: blue
+linkcolor: blue
+geometry: margin=0.75in
+fontsize: 10pt
+output: 
+  bookdown::pdf_document2:
+    toc: no
+    highlight: "default"
+    number_sections: yes
+    fig_caption: yes
+    dev: cairo_pdf
+    latex_engine: pdflatex
+    template: "Latex/template.tex"
+always_allow_html: true
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tinytex.verbose = TRUE)
+
+library(readxl)
+library(datamodelr)
+```
+
+# Repaso Clase 09 - Modelo de bases de datos 
+
+Recordar que estabamos aplicando dicho contenido al set de datos de aeropuertos.
+
+\noindent\rule{8cm}{0.4pt}
+
+**Código en R:**
+
+```{r, message = FALSE, warning=FALSE}
+library(readxl)
+
+flights_01 <- read_excel("G:/Mi Unidad/Docencia 2020 - 2021/UST - 2021 01 Análisis de Datos/excel/clase_08.xlsx",
+              sheet = "Flights")
+
+routes_01 <- read_excel("G:/Mi Unidad/Docencia 2020 - 2021/UST - 2021 01 Análisis de Datos/excel/clase_08.xlsx",
+                         sheet = "Routes")
+
+airports_01 <- read_excel("G:/Mi Unidad/Docencia 2020 - 2021/UST - 2021 01 Análisis de Datos/excel/clase_08.xlsx",
+                         sheet = "Airports")
+
+aircraft_01 <- read_excel("G:/Mi Unidad/Docencia 2020 - 2021/UST - 2021 01 Análisis de Datos/excel/clase_08.xlsx",
+                         sheet = "Aircraft")
+
+
+dm_f <- dm_from_data_frames(flights_01, routes_01, aircraft_01, airports_01)
+graph <- dm_create_graph(dm_f, rankdir = "BT", col_attr = c("column", "type"))
+dm_render_graph(graph)
+```
+
+\noindent\rule{8cm}{0.4pt}
+
+Después debemos generar las relaciones entre cada una de las tablas:
+
+\noindent\rule{8cm}{0.4pt}
+
+**Código en R:**
+
+```{r, message = FALSE, warning=FALSE}
+dm_f <- dm_add_references(
+  dm_f,
+  
+  aircraft_01$AircraftID == flights_01$AircraftID,
+  airports_01$AirportID == routes_01$AirportID,
+  flights_01$RouteID == routes_01$RouteID
+)
+graph <- dm_create_graph(dm_f, rankdir = "BT", col_attr = c("column", "type"))
+dm_render_graph(graph)
+
+```
+
+\noindent\rule{8cm}{0.4pt}
+
+Podemos intentar mejorar un poco el formato de la visualización:
+
+\noindent\rule{8cm}{0.4pt}
+
+**Código en R:**
+
+```{r}
+
+graph <- dm_create_graph( 
+  dm_f, 
+  graph_attrs = "rankdir = RL, bgcolor = '#F4F0EF' ", 
+  edge_attrs = "dir = both, arrowtail = crow, arrowhead = odiamond",
+  node_attrs = "fontname = 'Arial'")
+
+dm_render_graph(graph)
+
+
+```
+
+\noindent\rule{8cm}{0.4pt}
+
+# Utilización de Power Pivot
+
+Se les dejo un video relacionado con la utilización del complemento Power Pivot la semana pasada. 
+
+[https://web.microsoftstream.com/video/fe241af1-4c3f-4661-bcca-90c94288bffa](Enlace acá)
+
+## Pasos para insertar tablas en el Power Pivot
+
+1. Dar formato de tabla
+2. Agregar a modelo de datos
+3. Establecer relaciones entre tablas
+
+Veamos esto en el set de datos de la clase 09.
+
+## Utilización de tablas dinámicas
+
+Después de ingresar las tablas al modelo de datos y generar las relaciones, la manera de aplicar los calculos es utilizando tablas dinámicas. 
+
++ Replique el cálculo del promedio de retraso en los vuelos, utilizando el enfoque de tablas dínamicas a través de Power Pivot. ¿Se observan los mismos resultados de esa vez?
+
+Hablemos ahora de qué son las tablas dinámicas. 
+
+# Tablas Dinámicas
+
+Según la página de office, "una tabla dinámica es una herramienta avanzada para calcular, resumir y analizar datos que permite ver comparaciones, patrones y tendencia en ellos". 
+
+En este sentido, ya estamos dentro del mundo del análisis de datos. 
+
+## ¿Cómo se utilizan?
+
+La página de office nos ofrece una buena introducción:
+
+[https://support.microsoft.com/es-es/office/crear-una-tabla-dinámica-para-analizar-datos-de-una-hoja-de-cálculo-a9a84538-bfe9-40a9-a8e9-f99134456576](Enlace acá)
+
+## Tablas Dinámicas y Power Pivot
+
+La utilización de Power Pivot y las tablas dinámicas van de la mano; al generar las relaciones dentro de Power Pivot, la utilización de tablas dinámicas se puede dar considerando múltiples tablas. 
+
+## Tablas dinámicas y su diseño
+
++ Subtotales
+
++ Totales generales
+
++ Diseño de Informe
+
+Veamos cada una de estas opciones en la tabla ya creada. 
+
+
+## Tablas dinámicas y segmentadores
+
+Tanto los segmentadores como escalas de tiempo, permiten realizar filtros interactivos. 
+
+Veamos la aplicación de esto en la tabla ya creada. 
+
+# Avisos
+
++ La entrega del trabajo hoy. 
+
++ ¿Cómo será la siguiente prueba? 
+
+Se les entrega un set de datos, y se les hacen preguntas que deben responder aplicando lo visto en clases. La duración será de 90 minutos. 
+
+# Fechas Relevantes
+
+\begin{center}
+\begin{tabular}{|c|l|c|c|}
+	\hline
+	Unidad & Evaluación & Ponderación & Fecha \\
+	\hline
+	Unidad I & \sout{Evaluación diagnóstica} & & 25/03/2021 \\
+	\hline
+	& \sout{Evaluación Individual Participación} & (5\%) & 05/04/2021 \\
+	\hline
+	& \sout{Evaluación Grupal} & (15\%) & 27/04/2021 - 04/05/2021 \\
+	\hline
+	& Evaluación Individual - Sumativa I & (30\%) & 11/05/2021 \\
+	\hline
+	Unidad II & Evaluación Formativa & & 13/05/2021 \\
+	\hline
+	& Evaluación Individual Participación & (5\%) & 27/05/2021 \\
+	\hline
+	& Evaluación Grupal & (10\%) & 08/06/2021 - 15/06/2021 \\
+	\hline
+	& Evaluación Individual - Sumativa II & (15\%) & 17/06/2021 \\
+	\hline
+	Unidad III & Evaluación Formativa & & 22/06/2021 \\
+	\hline
+	& Evaluación Individual Participación & (5\%) & 24/06/2021 \\
+	\hline
+	& Evaluación Individual Sesión I- Sumativa III & (15\%) & 08/07/2021 \\
+	\hline
+	& Evaluación Individual Sesión II- Sumativa III & (15\%) & 13/07/2021 \\
+	\hline
+\end{tabular}
+\end{center}
+

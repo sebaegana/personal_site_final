@@ -1,0 +1,377 @@
+---
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{svg}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{attachfile}
+title: |
+  ![](logo_fen.jpg){width=2in}  
+  ICO 187 ANÁLISIS DE DATOS
+author: "Clase 25: Programación en R usando RStudio"
+year: 2021
+prof: "Sebastián Egaña"
+# due: "Jueves 11 de Marzo"
+# submit: "engin604assignments@gmail.com"
+# page: "5 páginas"
+# bibliography: "latex/references.bib"
+# biblio-style: "acm"
+link-citations: yes
+citecolor: blue
+urlcolor: blue
+linkcolor: blue
+geometry: margin=0.75in
+fontsize: 10pt
+output: 
+  bookdown::pdf_document2:
+    toc: no
+    highlight: "default"
+    number_sections: yes
+    fig_caption: yes
+    dev: cairo_pdf
+    latex_engine: pdflatex
+    template: "Latex/template.tex"
+always_allow_html: true
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tinytex.verbose = TRUE)
+
+library(readxl)
+library(datamodelr)
+library(tidyverse)
+library("factoextra")
+library(FactoMineR)
+library(cluster)
+library(gridExtra)
+
+data <- read_excel("G:/Mi unidad/Docencia 2020 - 2021/UST - 2021 01 Análisis de Datos/clustering/BIData.xlsx")
+
+```
+
+# Clase anterior
+
+En la clase anterior, introdujimos aspectos relacionados con la utilización de R, Rstudio y la programación asociada. Ahora nos abocaremos a intentar programar cosas simples.
+
+Aclaración: Las líneas de este documento que empiezan con ## [1] corresponde al output de la consola de R, y se generan debido a que se corre un código dentro del documento. 
+
+# Programación básica en R
+
+## Hello World!
+
+Un ejercicio básico es poder darle la instrucción al computador de imprimir (print) la frase "Hello World!" (Hola Mundo!). Veamos como hacer esto en R.
+
+El siguiente código puede realizar la tarea en R:
+
+```{r}
+print("Hello world!")
+```
+
+Veamos una estructura distinta, generando un objeto llamado print y después imprimiendolo en la consola:
+
+```{r}
+print <- print("Hello world!")
+
+print
+```
+
+## ¿Cómo programar un dado?^[Ejemplo en base al libro Hands on Programming]
+
+Pensemos en que elementos necesitamos para replicar un dado en la realidad. 
+
+1. Necesitamos la existencia de algun elemento que contenga las seis caras del dado.
+2. Necesitamos alguna función que nos permita obtener una de las caras del dado. 
+3. Debemos procupar que el número obtenido cumpla con ser obtenido a través de muestreo con reemplazo. 
+
+Con esto podríamos tener un dado. 
+
+Para poder cumplir con el punto 1, podemos generar un elemento que contenga números desde el 1 al 6. 
+
+```{r}
+
+caras <- 1:6
+
+caras
+```
+
+Para el punto 2, debemos buscar un comando que pueda extraer una muestra del elemento que posee los números (que corresponden a las caras del dado). Esto lo puede realizar el comando sample.
+
+Recordar que se puede buscar información sobre el comando anteponiendo signo de interrogación. 
+
+```{r, eval=FALSE}
+?sample
+```
+
+Ahora lo utilizamos, seteando la semilla para todos obtener el mismo resultado. Setear semilla, refiere a establecer el punto desde donde nace la generación aleotaria de números; al dejar establecida la "semilla", nos aseguramos de que a todos nos genere el mismo valor en un primer intento. 
+
+
+```{r}
+set.seed(10)
+
+sample(x = caras, size = 1, replace = TRUE)
+
+```
+
+Podríamos ahora nombrar al objeto, para que quede en el ambiente de R.
+
+```{r}
+dice <- sample(x = caras, size = 1, replace = TRUE)
+
+```
+
+Fijarse que al nombrarlo, no se genera un número aleatorio, lo único que se genera es el elemento.
+
+Para "tirar el dado", deberíamos llamar al elemento ahora
+
+```{r}
+set.seed(10)
+dice 
+```
+
+# Vectores, matrices, lista y dataframes/tibbles
+
+Pasaremos ahora a utilizar elementos u objetos de R, que por lo general poseen más de un dato. 
+
+## Pregunta 1^[Preguntas en base al curso generado por Victor Macías para la Universidad de Chile]
+
+A. Genere un vector que contenga la siguiente secuencia de números de 1 al 10.
+
+Existen tres formas para poder realizar esto
+
+- Forma 1.
+
+```{r}
+seq(1,10,1)
+```
+
+- Forma 2.
+
+```{r}
+1:10
+```
+
+- Forma 3.
+
+```{r}
+seq(10)
+```
+
+- Forma 4. 
+
+```{r}
+c(1,2,3,4,5,6,7,8,9,10)
+```
+
+Notas:
+
+- La sintaxis de la forma 1 contiene 3 argumentos:
+
+seq(from = 1, to = 10, by = 1)
+
+¿Cómo podemos buscar información sobre la función seq?
+
+```{r, eval=FALSE}
+?seq
+```
+
+B. Genere el siguiente vector: “year_2015”, “year_2016”, “year_2017”, “year_2018”
+
+```{r}
+year <- 2015:2018
+paste0("year_", year)
+```
+
+## ¿Cómo seleccionar valores de un vector?
+
+Por lo general, existen múltiples formas de seleccionar valores de un vector. Lo más común es seleccionarlos a través de su ubicación.
+
+Genermos un elemento considerando el vector anterior, pero haciendo una variación de la función paste0
+
+```{r}
+v_year <- paste0("year", sep = "_", year)
+```
+
+Ahora seleccionemos el primer elemento del vector:
+
+```{r}
+v_year[1]
+```
+
+Veamos que pasa cuando ponemos el signo "-" delante. 
+
+```{r}
+v_year[-1]
+```
+
+Dicho símbolo, actua como negación, esto en base a la lógica clásica. 
+
+En el caso de querer selecionar el último valor del vector, podríamos poner el número de dicho valor. Sabemos que el vector tiene 4 valores, por lo tanto podríamos cambiar el 1 por 4:
+
+```{r}
+v_year[4]
+```
+
+Otra forma, podría ser combinandolo con la función length
+
+```{r}
+v_year[length(v_year)]
+```
+
+Esta última forma es muy utilizada, debido a que genera la posibilidad de reacomodar la posición del último valor, debido a que depende del largo del vector para determinar su valor. Veamos que arroja al utilizarla:
+
+```{r}
+length(v_year)
+```
+
+En el caso de querer seleccionar varios valores, podemos realizarlo de la siguiente manera:
+
+```{r}
+v_year[c(1,3)]
+```
+
+Y aplica lo mismo en caso de la negación:
+
+```{r}
+v_year[-c(1,3)]
+```
+
+O también
+
+```{r}
+v_year[c(-1,-3)]
+```
+
+## Pregunta 2
+
+El vector x, contiene las edades de 5 estudiantes
+
+```{r}
+x = c("Pedro"=17, "Ana"=NA, "Maya"=23, "Max"=NA, "Paula"=20)
+```
+
+A. Defina un vector y que excluya los missing values (NA).
+
+```{r}
+y=x[-c(2,4)] #forma 1
+y
+```
+
+
+```{r}
+y=x[c(-2,-4)] # forma 2
+y
+```
+
+
+```{r}
+y=x[!is.na(x)] # forma 3
+y
+```
+
+
+```{r}
+y = na.omit(x) # forma 4
+y
+
+```
+
+
+B.  Asigne las edades de Pedro y Ana a un vector z
+```{r}
+z <- x[c("Pedro","Ana")] #forma 1
+z
+```
+
+```{r}
+z <- x[c(1,2)] #forma 2
+z
+```
+
+C. Calcule el promedio aritmético de las edades de los 5 estudiantes
+
+Veamos un primera manera:
+
+```{r}
+mean(x)
+```
+
+¿Qué cree que pasa en este caso? ¿Cuál es el error?
+
+Veamos una manera alternativa de solucionar esto:
+
+
+```{r}
+mean(x, na.rm = TRUE)
+```
+
+Recuerdo que la media muestral se define como:
+
+\begin{equation}
+\bar{x} = \frac{\sum^{n}_{i = 1} x_{i}}{n}
+\end{equation}
+
+Veamos la manera de realizar lo mismo, pero programando nosotros la función para el promedio:
+
+1. Primero deberíamos sumar todos los valores del vector.
+2. Dividir la suma de dichos números, sobre el total de valores del vector.
+
+¿Recuerda algunas funciones vistas que podamos utilizar?
+
+Veamos un primer intento:
+
+```{r}
+sum(x)/length(x)
+```
+
+Probemos esto sobre un elemento sin valores vacíos:
+
+```{r}
+sum(y)/length(y)
+```
+
+Con esto ya sabemos el problema. Intentemos lidiar con la posibilidad de tener valores NA dentro de nuestro vector. Veamos como realizar la suma:
+
+```{r}
+sum(x[!is.na(x)])
+```
+
+Y como realizar el conteo:
+
+```{r}
+length(x[!is.na(x)])
+```
+
+Combinemos ambas cosas:
+
+```{r}
+sum(x[!is.na(x)])/length(x[!is.na(x)])
+```
+
+# Fechas Relevantes
+
+\begin{center}
+\begin{tabular}{|c|l|c|c|}
+	\hline
+	Unidad & Evaluación & Ponderación & Fecha \\
+	\hline
+	Unidad I & \sout{Evaluación diagnóstica} & & 25/03/2021 \\
+	\hline
+	& \sout{Evaluación Individual Participación} & (5\%) & 05/04/2021 \\
+	\hline
+	& \sout{Evaluación Grupal} & (15\%) & 27/04/2021 - 04/05/2021 \\
+	\hline
+	& \sout{Evaluación Individual - Sumativa I} & (30\%) & 11/05/2021 \\
+	\hline
+	Unidad II & Evaluación Grupal & (15\%) & 20/06/2021 \\
+	\hline
+	& Evaluación Grupal - Sumativa II & (15\%) & 27/06/2021 \\
+	\hline
+	Unidad III & Evaluación Formativa & & 27/06/2021 \\
+	\hline
+	& Evaluación Grupal Sesión I- Sumativa III & (20\%) & 08/07/2021 \\
+	\hline
+	& Evaluación grupal Sesión II- Sumativa III & (20\%) & 13/07/2021 \\
+	\hline
+\end{tabular}
+\end{center}
+

@@ -1,0 +1,194 @@
+---
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{svg}
+  - \usepackage{attachfile}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{pdflscape}
+title: |
+  ![](logo_fen.jpg){width=2in}  
+  ICO 187 ANÁLISIS DE DATOS
+author: "Examen"
+year: 2021
+prof: "Sebastián Egaña"
+#due: "martes 04 de mayo del 2021"
+# submit: "engin604assignments@gmail.com"
+# page: "5 páginas"
+# bibliography: "latex/references.bib"
+# biblio-style: "acm"
+link-citations: yes
+citecolor: blue
+urlcolor: blue
+linkcolor: blue
+geometry: margin=0.75in
+fontsize: 10pt
+documentclass: exam
+classoption: answers
+output: 
+  bookdown::pdf_document2:
+    toc: no
+    highlight: "default"
+    number_sections: yes
+    fig_caption: yes
+    dev: cairo_pdf
+    latex_engine: pdflatex
+    template: "Latex/template.tex"
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Instrucciones
+
+Debe subir su archivo DOCX a la intranet de la Universidad, en la tarea asignada. 
+
+Son 95 puntos totales, Parte 1.1 - 10 puntos, Parte 1.2 - 15 puntos, Parte 2.1 - 30 puntos y Parte 2.2 - 40 puntos. 
+
+# Selección múltiple (25 puntos)
+
+## Generales (10 puntos).
+
+1. Para generar tanto un modelo en Power Pivot o en Power Bi, ¿qué se tipo de llave se necesita tener para unir dos set de datos? (2 puntos)
+
+\begin{checkboxes}
+\choice Llave primerisa - Llave foránea
+\choice Llave primeria - Llave secundaria
+\choice Llave primaria - Llave foránea
+\choice Llave extranjera - Llave foránea
+\end{checkboxes}
+
+2. Selecciones el tipo de join a continuación (2 puntos): 
+
+| A | | B |
+|:---:|:---:|:----:|
+| 1 | | NULL | 
+| 2 | | NULL | 
+| 3 | | 3 | 
+| 4 | | 4 | 
+| NULL | | 5 | 
+| NULL | | 6 | 
+
+\begin{checkboxes}
+\choice Ultra join
+\choice Outer join
+\choice Outer join - Left Join
+\choice Outer join - Right Join
+\end{checkboxes}
+
+3. ¿Qué frase define mejor lo que es un segmentador de datos en Excel? (2 puntos)
+
+\begin{checkboxes}
+\choice Es una herramienta de segmentación.
+\choice Permite aplicar filtros de manera visual e interactiva.
+\choice Permite determinar los segmentos de un set de datos.
+\choice Permite segmentar. 
+\end{checkboxes}
+
+4. ¿Cuáles son los procesos dentro de la dinámica de Pwoer Bi para el análisis de datos? (2 puntos)
+
+\begin{checkboxes}
+\choice Importar datos - Visualizar datos - Generar reporte
+\choice Obtener data - Crear modelo - Análizar los datos - Crear y publicar reporte. 
+\choice Analizar datos - Generar reporte
+\choice Obtener data - Crear modelo - Análizar los datos - Enviar reporte por mail. 
+\end{checkboxes}
+
+5. Dentro del entorno de Power Bi, vimos dos tipos de uniones de datos, seleccione la alternativa correcta (2 puntos):
+
+\begin{checkboxes}
+\choice Import y join. 
+\choice Join y multi join.  
+\choice Append y join. 
+\choice Left join y right join.  
+\end{checkboxes}
+
+## Programación en R (15 puntos).
+
+1. ¿Cuál es el paquete utilizado para graficar en R? (3 puntos).
+
+\begin{checkboxes}
+\choice ggplot
+\choice ggplot2
+\choice plotly
+\choice plot
+\end{checkboxes}
+
+2. Elija la respuesta correcta considerando el código a continuación (3 puntos):
+
+```{r, eval=FALSE}
+a <- 1
+b <- 2
+c <- a + b
+a <- 10
+
+print(paste("La suma de a + b es igual", c))
+
+```
+
+\begin{checkboxes}
+\choice La suma de a + b es igual 3
+\choice La suma de a + b es igual 1
+\choice La suma de a + b es igual 12
+\choice La suma de a + b es igual 2
+\end{checkboxes}
+
+3. Considere la siguiente función en Excel =SI(A2 = 1; 1; 0); el segundo operador "=", por lo tanto dentro de la función SI con que operador se relaciona en R (3 puntos).:
+
+\begin{checkboxes}
+\choice =
+\choice <-
+\choice ->
+\choice ==
+\end{checkboxes}
+
+4. Considere la siguiente descripción verbal de un vector: "Se tiene un vector fila de largo n". ¿Cuál es la dimensionalidad de dicho vector? (3 puntos).
+
+\begin{checkboxes}
+\choice 1:n
+\choice n:1
+\choice 1:\$
+\choice 1:inf
+\end{checkboxes}
+
+5. Se tiene un conjunto de datos denominado "datos_uno", que posee las variables "nombre", "rut" y "edad", ¿qué código sirve para seleccionar la variable "rut" (3 puntos).:
+
+\begin{checkboxes}
+\choice datos\$rut
+\choice datos\_uno
+\choice datos\_uno\$rut
+\choice select(rut)
+\end{checkboxes}
+
+# Preguntas abiertas (70 puntos)
+
+## Generales (30 puntos)
+
+1. ¿Cuál es el procedimiento de análisis de datos visto en clases? Explique cada una de sus partes (10 puntos).
+
+2. ¿Cuál es el objetivo del análisis de datos? (10 puntos).
+
+3. Sobre las visualizaciones, vimos que un gráfico puede ser Feo, malo o malísimo. Explique cada categorización. (5 puntos).
+
+4. En el contexto de la construcción de bases de datos, defina "Modelo relacional". (5 puntos).
+
+## Programación en R (40 puntos)
+
+1. Considere el siguiente set de datos (15 puntos):
+
+```{r}
+mtcars[1:10,]
+```
+
+Describa dicho set de datos seleccionado: 
+
+\begin{parts}
+\part[5] ¿Cuál es la unidad de observación del set de datos?
+\part[5] ¿Cuántas observaciones tiene?
+\part[5] ¿Cuántas variables tiene?
+\end{parts}
+
+2. En R existe la opción de generar documentos utilizando el formato Rmarkdown que incluye los cálculos y gráficos realizados en dicho entorno de programación. Compare dicha forma de trabajo, con la clásica forma de trabajar usando Excel y Word. Refierase al concepto "flujo de trabajo reproducible" (15 puntos).
+
+3. ¿Cuáles son los pasos vistos en clase para graficar utilizando ggplot2? (10 puntos).

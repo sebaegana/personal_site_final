@@ -1,0 +1,327 @@
+---
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{svg}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{attachfile}
+title: |
+  ![](logo_fen.jpg){width=2in}  
+  ICO 187 ANÁLISIS DE DATOS
+author: "Clase 26: Programación en R usando RStudio"
+year: 2021
+prof: "Sebastián Egaña"
+# due: "Jueves 11 de Marzo"
+# submit: "engin604assignments@gmail.com"
+# page: "5 páginas"
+# bibliography: "latex/references.bib"
+# biblio-style: "acm"
+link-citations: yes
+citecolor: blue
+urlcolor: blue
+linkcolor: blue
+geometry: margin=0.75in
+fontsize: 10pt
+output: 
+  bookdown::pdf_document2:
+    toc: no
+    highlight: "default"
+    number_sections: yes
+    fig_caption: yes
+    dev: cairo_pdf
+    latex_engine: pdflatex
+    template: "Latex/template.tex"
+always_allow_html: true
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tinytex.verbose = TRUE)
+
+library(readxl)
+library(datamodelr)
+library(tidyverse)
+library("factoextra")
+library(FactoMineR)
+library(cluster)
+library(gridExtra)
+
+data <- read_excel("G:/Mi unidad/Docencia 2020 - 2021/UST - 2021 01 Análisis de Datos/clustering/BIData.xlsx")
+
+```
+
+# Pregunta de desarrollo en R
+
+## Pregunta 2 (Continuación clase pasada)
+
+El vector x, contiene las edades de 5 estudiantes
+
+```{r}
+x = c("Pedro"=17, "Ana"=NA, "Maya"=23, "Max"=NA, "Paula"=20)
+```
+
+A. Defina un vector y que excluya los missing values (NA).
+
+```{r}
+y=x[-c(2,4)] #forma 1
+y
+```
+
+
+```{r}
+y=x[c(-2,-4)] # forma 2
+y
+```
+
+
+```{r}
+y=x[!is.na(x)] # forma 3
+y
+```
+
+
+```{r}
+y = na.omit(x) # forma 4
+y
+
+```
+
+
+B.  Asigne las edades de Pedro y Ana a un vector z
+```{r}
+z <- x[c("Pedro","Ana")] #forma 1
+z
+```
+
+```{r}
+z <- x[c(1,2)] #forma 2
+z
+```
+
+C. Calcule el promedio aritmético de las edades de los 5 estudiantes
+
+Veamos un primera manera:
+
+```{r}
+mean(x)
+```
+
+¿Qué cree que pasa en este caso? ¿Cuál es el error?
+
+Veamos una manera alternativa de solucionar esto:
+
+
+```{r}
+mean(x, na.rm = TRUE)
+```
+
+Recuerdo que la media muestral se define como:
+
+\begin{equation}
+\bar{x} = \frac{\sum^{n}_{i = 1} x_{i}}{n}
+\end{equation}
+
+Veamos la manera de realizar lo mismo, pero programando nosotros la función para el promedio:
+
+1. Primero deberíamos sumar todos los valores del vector.
+2. Dividir la suma de dichos números, sobre el total de valores del vector.
+
+¿Recuerda algunas funciones vistas que podamos utilizar?
+
+Veamos un primer intento:
+
+```{r}
+sum(x)/length(x)
+```
+
+Probemos esto sobre un elemento sin valores vacíos:
+
+```{r}
+sum(y)/length(y)
+```
+
+Con esto ya sabemos el problema. Intentemos lidiar con la posibilidad de tener valores NA dentro de nuestro vector. Veamos como realizar la suma:
+
+```{r}
+sum(x[!is.na(x)])
+```
+
+Y como realizar el conteo:
+
+```{r}
+length(x[!is.na(x)])
+```
+
+Combinemos ambas cosas:
+
+```{r}
+sum(x[!is.na(x)])/length(x[!is.na(x)])
+```
+
+## Pregunta 3
+
+Calcule el valor presente de un flujo de efectivo de $1000 por un total de diez períodos. Asuma una tasa de descuento de 10%. Considerar que la el valor presente se define de la siguiente manera:
+
+\begin{equation}
+VP = \sum_{t = 0}^{T} \frac{F_{t}}{(1+ r)^{t}}
+\end{equation}
+
+Consideremos la definición de algunos elementos para solucionar esto:
+
+```{r}
+r = 0.1 #tasa de descuento
+flujo_efectivo = 1000 #flujo por período
+n=10
+periodo = 1:n #períodos
+```
+
+Luego calculamos el valor presente de la siguiente manera:
+
+```{r}
+valor_presente <- sum(flujo_efectivo * (1 + r) ^ -periodo)
+```
+
+
+Expresamos el valor: 
+
+```{r}
+paste0("Valor Presente", "=","$", round(valor_presente,0)) #forma 1
+paste0("Valor Presente", "=","$", round((flujo_efectivo/r)*(1 - (1 + r) ^-n),0)) #forma 2
+```
+
+## Pregunta 4
+
+Se define la siguiente matriz
+
+\begin{equation}
+\begin{matrix}
+0 & 10 & -5 \\
+5 & 8 & -4 \\
+0 & 1 & -1 
+\end{matrix}
+\end{equation}
+
+A. Construya la matriz X y asigne nombres a sus filas y columnas
+
+```{r}
+a <- c(0,10,-5)
+b <- c(5,8,-4)
+c <- c(0,1,-1)
+X <- rbind(a,b,c)
+rownames(X) <- c("fila1", "fila2", "fila3")
+colnames(X) <- c("columna1", "columna2", "columna3")
+
+X
+```
+
+Pregunta: ¿Cómo construiría la matriz a partir de vectores que definen las columnas?
+
+Como en el caso anterior, primero debemos definir los vectores columna:
+
+```{r}
+d <- c(0,5,0)
+e <- c(10,8,1)
+f <- c(-5,-4,-1)
+```
+
+La diferencia se basa en que ahora no debemos unir 
+
+
+```{r}
+y <- cbind(d,e,f)
+rownames(y) <- c("fila1", "fila2", "fila3")
+colnames(y) <- c("columna1", "columna2", "columna3")
+
+y
+
+```
+
+Pregunta: ¿Cómo podría construir la matriz a partir de un único vector?
+
+Primero al almacenamos los elementos en un vector:
+
+```{r}
+g <- c(0,5,0, 10,8,1,-5,-4,-1)
+```
+
+Se debe considerar el orden la generar el vector; en este caso se hizo por columnas. 
+
+```{r}
+z <- matrix(g, byrow = FALSE)
+```
+
+En caso de generarse el vector por fila, solo se cambia un argumento del comando matrix:
+
+```{r}
+h <- c(0,10,-5,5,8,-4,0,1,-1)
+
+z_1 <- matrix(h, nrow = 3, byrow = TRUE)
+
+z_1
+```
+
+
+B. Almacene la segunda fila de X en el vector z
+
+```{r}
+z <- X[2,]
+z
+```
+
+
+C. Almacene los elementos (2, 3) y (3, 3) en el vector w
+
+```{r}
+w <- X[c(1,3),3]
+w
+```
+ 
+
+# ¿Cómo podemos visualizar un elemento?
+
+Existen dos formas
+
+```{r, eval=FALSE}
+View(x)
+```
+
+```{r, eval=FALSE}
+View(y)
+```
+
+Considerando que dependerá del elemento, si se muestran los datos o no. En el segundo caso, el elemento posee varias carácteristicas y por lo mismo no nos muestra los valores de inmediato. 
+
+Una alternativa puede ser usar el siguiente comando
+
+```{r, eval=FALSE}
+utils::View(y)
+```
+
+
+# Fechas Relevantes
+
+\begin{center}
+\begin{tabular}{|c|l|c|c|}
+	\hline
+	Unidad & Evaluación & Ponderación & Fecha \\
+	\hline
+	Unidad I & \sout{Evaluación diagnóstica} & & 25/03/2021 \\
+	\hline
+	& \sout{Evaluación Individual Participación} & (5\%) & 05/04/2021 \\
+	\hline
+	& \sout{Evaluación Grupal} & (15\%) & 27/04/2021 - 04/05/2021 \\
+	\hline
+	& \sout{Evaluación Individual - Sumativa I} & (30\%) & 11/05/2021 \\
+	\hline
+	Unidad II & \sout{Evaluación Grupal} & (15\%) & 20/06/2021 \\
+	\hline
+	& Evaluación Grupal - Sumativa II & (15\%) & 27/06/2021 \\
+	\hline
+	Unidad III & Evaluación Formativa & & 27/06/2021 \\
+	\hline
+	& Evaluación Grupal Sesión I- Sumativa III & (20\%) & 08/07/2021 \\
+	\hline
+	& Evaluación grupal Sesión II- Sumativa III & (20\%) & 13/07/2021 \\
+	\hline
+\end{tabular}
+\end{center}
+

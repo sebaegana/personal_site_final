@@ -1,0 +1,259 @@
+---
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{svg}
+title: |
+  ![](logo_fen.jpg){width=2in}  
+  ICO 187 ANÁLISIS DE DATOS
+author: "Clase 07: ¿Qué es análisis de datos?"
+year: 2021
+prof: "Sebastián Egaña"
+# due: "Jueves 11 de Marzo"
+# submit: "engin604assignments@gmail.com"
+# page: "5 páginas"
+# bibliography: "latex/references.bib"
+# biblio-style: "acm"
+link-citations: yes
+citecolor: blue
+urlcolor: blue
+linkcolor: blue
+geometry: margin=0.75in
+fontsize: 10pt
+output: 
+  bookdown::pdf_document2:
+    toc: no
+    highlight: "default"
+    number_sections: yes
+    fig_caption: yes
+    dev: cairo_pdf
+    latex_engine: pdflatex
+    template: "Latex/template.tex"
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introducción
+
+Recordar que estabamos revisando los distintos pasos del proceso de análisis de datos. 
+
+\begin{center}
+\includegraphics[height=150px]{data_process.png} \\
+Fuente: Wickham \& Grolemound (2017)
+\end{center}
+
+En este sentido, falto analizar el apartado de visualización, debido a que en este curso no entraremos en lo relacionado con Modelación. 
+
+Por otra parte, veremos un apartado que se encuentra dentro del proceso de ordenar los datos, pero que por su complejidad debe verse de manera separada. 
+
+# Visualización
+
+La visualización, es en parte un arte y en parte una ciencia (Wilke, 2019).
+
+La relevancia de la visualización se genera como una aproximación visual resumida a los datos. El problema, es que no todas las visualizaciones son buenas, en otras palabras no todos los gráficos son construidos de manera correcta. 
+
+Un buen gráfico no responde necesariamente sobre el ¿cómo se ve?, sino que debe responder a la necesidad de ¿quién lo ve? y ¿por qué lo ve?
+
+## Lo que no se debe hacer y lo que se debe hacer.
+
+Veamos un primer ejemplo:
+
+\begin{center}
+\includegraphics[height=200px]{graph_01.jpg} \\
+Fuente: Healy (2018)
+\end{center}
+
++ ¿Qué le parece a usted? ¿es un buen o mal gráfico?
+
+Otro ejemplo:
+
+\begin{center}
+\includegraphics[height=200px]{graph_02.jpg} \\
+Fuente: Healy (2018)
+\end{center}
+
+## Feo, malo y malísimo (Wilke, 2019).
+
+Un gráfico puede tener tres errores:
+
++ Feo (Ugly): Esto corresponde al caso cuando falla la estética, pudiendo ser claro e informativo. 
+
++ Malo (Bad): Se da cuando existen problemas de percepción en el gráfico, pudiendo ser poco claro, consufo o engañoso. 
+
++ Malísimo (Wrong): Cuándo existen errores matemáticos detrás del gráfico.
+
+Veamos esto de manera aplicada:
+
+\begin{center}
+\includegraphics[height=200px]{graph_05.jpg} \\
+Fuente: Wilke (2019)
+\end{center}
+
+Un ejemplo más realista de lo antes mencionado. Este gráfico, ¿está feo, malo o malísimo?
+
+\begin{center}
+\includegraphics[height=200px]{graph_06.jpg} \\
+Fuente: Evergreen (2019)
+\end{center}
+
+
+## La intencionalidad detrás del gráfico.
+
+Dos maneras distintas de graficar lo mismo: una mejor que otra.
+
+\begin{center}
+\includegraphics[height=200px]{graph_03.jpg} \\
+Fuente: Evergreen (2019)
+\end{center}
+
+
+\begin{center}
+\includegraphics[height=200px]{graph_04.jpg} \\
+Fuente: Evergreen (2019)
+\end{center}
+
+## La visualización ideal en seis imagénes (Roam, 2016).
+
+1. Who and what is involved (¿Quién o qué está involucrado?): Se debe iniciar con un resumen visual sobre lo que se hablará. 
+
+2. How many are involved (¿Qué cantidad está involucrada?): Se deben generar medidas cuantitativas de lo hablado. Cambios en los números también son relevantes.
+
+3. Where the pieces are located (¿Dónde se ubica?): Presentar alguna relación visual entre lo hablado y su ubicación. 
+
+4. When things occur (¿Cuándo ocurre?): Mostrar algo relacionado con la temporalidad o la secuencia de los eventos en las que ocurren las interacciones relevantes. 
+
+5. How things impact each other (¿Cómo las cosas se relacionan?): Generar una visualización que presente la relación causa - efecto que afectan lo mostrado anteriormente. 
+
+6. WHy this matters (¿Por qué es importante?): Se debe concluir visualizado anteriormente. 
+
+\begin{center}
+\includegraphics[height=200px]{imagen_61.jpg} \\
+Fuente: (Roam, 2016)
+\end{center}
+
+# Unión de bases de datos (Joins). 
+
+Corresponde al intento de establecer relaciones entre distintas bases de datos o tablas. Esto permite el generar bases de datos más grandes, a tráves de la unión de dos relacionadas. 
+
+Las funciones que hemos revisados relacionadas con esto son las siguientes:
+
++ Indice
++ Coincidir
++ Buscarv
++ Buscarh
++ Buscarx
+
+A pesar de esto, nosotros buscamos aplicaciones más elaboradas de esto. Buscamos realizar uniones (joins) distintos de los anteriores, debido que esto nos obligan a añadir columnas o filas a tráves de relaciones. En el curso veremos como realizar esto utilizando Power Pivot y como realizarlo en Rstudio.
+
+## Uniones: llave primaria y foránea
+
+En SQL, se habla principalmente de llaves en el sentido de columnas que nos permitan unir dos bases. Intentamos realizar un metodo que mantenga la integridad de la tabla a la cual añadiré información.
+
+Una llave primaria corresponde a la columna de la base a la cual yo deseo unir otra columna, usando como punto de interacción una llave foránea. 
+
+Consideremos las dos bases, en donde A corresponde a la llave primaria y B corresponde a la base foránea de cada una de las bases:
+
+
+| A | | B |
+|:---:|:---:|:----:|
+| 1 | | 3 | 
+| 2 | | 4 | 
+| 3 | | 5 | 
+| 4 | | 6 | 
+
+¿Qué valores se repiten dentro de cada llave? 
+
+Una complejidad de las uniones en SQL, corresponde a los requisitos que se deben cumplir para poder realizar uniones entre bases. Por ejemplo, una particularidad es que la llave primaria no debe tener valores repetidos y esto se repite en programas como RStudio. Por otra parte, Excel al utilizar funciones de manera individual (celda por celda), no posee dicho problema. 
+
+Veamos ahora distintos tipos de uniones que pueden generarse. 
+
++ Inner Join: Refiere a la unión en base a intersecciones. 
+
+
+| A | | B |
+|:---:|:---:|:----:|
+| 3 | | 3 | 
+| 4 | | 4 | 
+
+
++ Outer Join: Refiere a la unión de todas las columnas en A y todas las columnas en B. Las celdas sin correlativo en la otra base, generarán un valor nulo. 
+
+
+| A | | B |
+|:---:|:---:|:----:|
+| 1 | | NULL | 
+| 2 | | NULL | 
+| 3 | | 3 | 
+| 4 | | 4 | 
+| NULL | | 5 | 
+| NULL | | 6 | 
+
+
+Esto tipo de unión, puede tener dos variaciones:
+
++ Outer Join > Left Outer Join: Predominan las columnas en A, y las comunes en B.
+
+
+| A | | B |
+|:---:|:---:|:----:|
+| 1 | | NULL | 
+| 2 | | NULL | 
+| 3 | | 3 | 
+| 4 | | 4 | 
+
+En Rstudio solo se conoce como Left Join. 
+
++ Outer Join > Right Outer Join: Predominan las columnas en B, y las comunes en A.
+
+
+| A | | B |
+|:---:|:---:|:----:|
+| 3 | | 3 | 
+| 4 | | 4 | 
+| NULL | | 5 | 
+| NULL | | 6 | 
+
+En Rstudio solo se conoce como Right Join.
+
+# Avisos
+
+Para la próxima clase debe tener activado el complemento de Power Pivot.
+
+Revisa siempre cuál será su próxima evaluación. 
+
+# Fechas Relevantes
+
+\begin{center}
+\begin{tabular}{|c|l|c|c|}
+	\hline
+	Unidad & Evaluación & Ponderación & Fecha \\
+	\hline
+	Unidad I & Evaluación diagnóstica & & 25/03/2021 \\
+	\hline
+	& Evaluación Individual Participación & (5\%) & 05/04/2021 \\
+	\hline
+	& Evaluación Grupal & (15\%) & 27/04/2021 - 04/05/2021 \\
+	\hline
+	& Evaluación Individual - Sumativa I & (30\%) & 11/05/2021 \\
+	\hline
+	Unidad II & Evaluación Formativa & & 13/05/2021 \\
+	\hline
+	& Evaluación Individual Participación & (5\%) & 27/05/2021 \\
+	\hline
+	& Evaluación Grupal & (10\%) & 08/06/2021 - 15/06/2021 \\
+	\hline
+	& Evaluación Individual - Sumativa II & (15\%) & 17/06/2021 \\
+	\hline
+	Unidad III & Evaluación Formativa & & 22/06/2021 \\
+	\hline
+	& Evaluación Individual Participación & (5\%) & 24/06/2021 \\
+	\hline
+	& Evaluación Individual Sesión I- Sumativa III & (15\%) & 08/07/2021 \\
+	\hline
+	& Evaluación Individual Sesión II- Sumativa III & (15\%) & 13/07/2021 \\
+	\hline
+\end{tabular}
+\end{center}
+

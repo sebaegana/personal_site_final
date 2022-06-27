@@ -1,0 +1,84 @@
+---
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{svg}
+title: |
+  ![](logo_fen.jpg){width=2in}  
+  ICO 187 ANÁLISIS DE DATOS
+author: "Sumativa N° 2"
+year: 2021
+prof: "Sebastián Egaña"
+#due: "martes 04 de mayo del 2021"
+# submit: "engin604assignments@gmail.com"
+# page: "5 páginas"
+# bibliography: "latex/references.bib"
+# biblio-style: "acm"
+link-citations: yes
+citecolor: blue
+urlcolor: blue
+linkcolor: blue
+geometry: margin=0.75in
+fontsize: 10pt
+output: 
+  bookdown::pdf_document2:
+    toc: no
+    highlight: "default"
+    number_sections: yes
+    fig_caption: yes
+    dev: cairo_pdf
+    latex_engine: pdflatex
+    template: "Latex/template.tex"
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Instrucciones generales
+
+1. El informe debe ser entregado en formato word. Considere convertir a formato pdf.  
+
+2. El archivo debe ser enviado al correo del profesor: sebastianeganasa@santotomas.cl, hasta las 23:59 del día de entrega. La fecha de entrega es el **04 de julio del 2021**.
+
+3. Los grupos deben ser de 3 a 4 personas. Sin excepciones. 
+
+4. Solo deben utilizarse funciones para realizar sus cálculos; no se acepta la utilización de valores "pegados", tablas dinámicas, utilización de análisis de datos o agrupamientos raros en Excel. Considere que en caso de reemplazos, esto no es necesario pero se deben especificar dichos procedimientos.
+
+5. Se deben respetar los grupos del trabajo anterior, considerado un set de datos asignado para cada grupo.Se dejarán a disposición dos set de datos además de los diez ya establecidos para los grupos anteriores, los que para ser utilizados por algún grupo nuevo deberán ser informados al profesor. 
+
+# Importante
+
+\begin{itemize}
+
+\item Se debe enviar un mail para la asignación del set de datos. 
+
+\item Se debe limitar el universo de análisis en caso de ser necesario. Por ejemplo, se puede hablar de los datos de una manera muy general: en los datos, un total de X son hombres y Y son mujeres, pero ahora nos centramos en detalle en bla bla bla.  
+		
+\end{itemize}
+
+# Desarrollo
+
+Se deberá utilizar el set de datos asignado según el final de la clase del día 24-06-2021.  
+
+La evaluación posee un total de 70 puntos
+
+Puntos a desarrollar:
+
+1. Análisis y descripción de cada variable en el set de datos. Se debe especificar en qué consiste cada variable y el tipo de variable al cual corresponde. (15 puntos)
+
+2. Se debe generar una estadística desriptiva de las variables, que nos hablé del número de datos de cada variable, número de grupos, media, varianza, moda, etc. Recuerde que esto depende del tipo de variable. (10 puntos)
+
+3. En caso de ser necesario, se debe especificar si debe realizar algún tipo de corrección a los datos. Esto debe ser justificado de una buena manera. (5 puntos) 
+
+4. Debe agregarle valor a la base de datos; esto refiere a la generación de nuevas variables para la entrega de información. Una opción es generar varibles, la otra es añadirle un set de datos con información nueva. (10 puntos)
+
+5. Propuesta de visualización (30 puntos)
+
+En general, debe intentar contarme una historia sobre el set de datos. Considere los siguientes puntos para esto. 
+
+A. ¿Qué quiere informar sobre el set de datos? ¿Para quién va dirigido?
+
+B. ¿Cómo lo va a informar? ¿Qué visualizaciones requerirá? Poner algunos ejemplos no está mal.  
+
+
