@@ -1,7 +1,7 @@
 ---
 date: "2021-01-24"
 linkTitle: ICO-187 Análisis de datos
-summary: aElectivo Ingeniería Comercial
+summary: Electivo Ingeniería Comercial
 title: "\U0001F4C8 ICO-187 Análisis de datos"
 type: book
 ---

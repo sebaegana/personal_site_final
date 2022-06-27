@@ -32,13 +32,16 @@
     <loc>https://segana.netlify.app/talks/example/</loc>
     <lastmod>2021-10-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://segana.netlify.app/courses/ust_analisisdedatos_012021/</loc>
-    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://segana.netlify.app/courses/</loc>
     <lastmod>2021-01-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://segana.netlify.app/courses/example/</loc>
+    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://segana.netlify.app/courses/ust_pep_012021/</loc>
+    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://segana.netlify.app/courses/ust_analisisdedatos_012021/</loc>
     <lastmod>2021-01-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://segana.netlify.app/courses/intro_r/</loc>
