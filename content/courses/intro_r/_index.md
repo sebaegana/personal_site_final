@@ -6,7 +6,7 @@ title: "\U0001F4CA Introducción a R"
 type: book
 ---
 
-{{< figure src="intro_r.jpg" >}}
+{{< figure src="featured.jpg" >}}
 
 <!---
 {{< toc hide_on="xl" >}}
