@@ -6,7 +6,7 @@ title: "\U0001F4C8 ICG-028 Preparación y evaluación de proyectos"
 type: book
 ---
 
-{{< figure src="intro_r.jpg" >}}
+{{< figure src="hola_2.jpg" >}}
 
 
 {{< toc hide_on="xl" >}}
