@@ -23,9 +23,9 @@ interests:
 - Economía
 - Programación
 organizations:
-- name: Universidad Santo Tomás - Facultad de Economía y Negocios
-  url: https://www.ust.cl/facultades-y-carreras/facultades/facultad-de-economia-y-negocios/
-role: Coordinador de Pregrado
+- name: AFP PlanVital
+  url: https://www.planvital.cl/afiliado/inicio
+role: Data Scientist
 social:
 - icon: envelope
   icon_pack: fas
@@ -57,7 +57,7 @@ Entusiasta de la programación y de las ciencias de datos, me desempeño princip
 
 {{< icon name="download" pack="fas" >}}{{< staticref "uploads/cv_sebastian_egana 20220614 ACAD.pdf" "newtab" >}}Academic CV{{< /staticref >}}.
 
-{{< icon name="download" pack="fas" >}}{{< staticref "uploads/cv_sebastian_egana 20220614 PROF.pdf" "newtab" >}}Professional CV{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}}{{< staticref "uploads/cv_sebastian_egana 20230129 PROF.pdf" "newtab" >}}Professional CV{{< /staticref >}}.
 
 Creación: **27-08-2021**
 
