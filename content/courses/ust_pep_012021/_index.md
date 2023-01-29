@@ -37,6 +37,6 @@ type: book
 
 ### Dataset and other files
 
-+ {{< staticref "uploads/ust_pep_012021/excel.zip" "newtab" >}}data{{< /staticref >}}
++ {{< staticref "uploads/ust_pep_012021/data.zip" "newtab" >}}data{{< /staticref >}}
 
 

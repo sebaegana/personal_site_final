@@ -55,7 +55,7 @@ title: Sebastián Egaña Santibáñez
 
 Entusiasta de la programación y de las ciencias de datos, me desempeño principalmente como analista en control de gestión y finanzas.
 
-{{< icon name="download" pack="fas" >}}{{< staticref "uploads/cv_sebastian_egana 20220614 ACAD.pdf" "newtab" >}}Academic CV{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}}{{< staticref "uploads/cv_sebastian_egana 20230129 ACAD.pdf" "newtab" >}}Academic CV{{< /staticref >}}.
 
 {{< icon name="download" pack="fas" >}}{{< staticref "uploads/cv_sebastian_egana 20230129 PROF.pdf" "newtab" >}}Professional CV{{< /staticref >}}.
 
