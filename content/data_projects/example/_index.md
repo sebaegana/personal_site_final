@@ -12,4 +12,4 @@ type: book
 
 Les dejo el enlace al Github con la información:
 
-- [Link]("https://github.com/sebaegana/ipsa_by_year")
+- [Link](https://github.com/sebaegana/ipsa_by_year)
