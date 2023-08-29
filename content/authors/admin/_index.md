@@ -49,6 +49,11 @@ social:
   icon: linkedin
   icon_pack: fab
   link: https://www.linkedin.com/in/sebastian-egana-santibanez/
+- display:
+    header: true
+  icon: mastodon
+  icon_pack: fab
+  link: https://mastodon.social/@segana
 superuser: true
 title: Sebastián Egaña Santibáñez
 ---
