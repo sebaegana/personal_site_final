@@ -60,9 +60,7 @@ title: Sebastián Egaña Santibáñez
 
 Científico de datos, docente universitario y asesor en temas varios.
 
-{{< icon name="download" pack="fas" >}}{{< staticref "uploads/cv_sebastian_egana 20230829 ACAD.pdf" "newtab" >}}Academic CV{{< /staticref >}}.
-
-{{< icon name="download" pack="fas" >}}{{< staticref "uploads/cv_sebastian_egana 20230829 PROF.pdf" "newtab" >}}Professional CV{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}}{{< staticref "uploads/cv_sebastian_egana 20241018 PROF TI.pdf" "newtab" >}}Curriculum Vitare{{< /staticref >}}.
 
 Creación: **27-08-2021**
 
