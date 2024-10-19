@@ -64,9 +64,9 @@ type: book
 
 Scrapping de tablas desde un pdf:
 
-+ {{< staticref "uploads/fen_finanzasr_102024/ejemplo_pdf/read_tables_20240923.R" "newtab" >}}Notebook Visualización{{< /staticref >}}
++ {{< staticref "uploads/fen_finanzasr_102024/ejemplo_pdf/read_tables_20240923.R" "newtab" >}}Código en R{{< /staticref >}}
 
 Se debe utilizar el siguiente archivo:
 
-+ {{< staticref "uploads/fen_finanzasr_102024/ejemplo_pdf/usbp_stats_fy2017_sector_profile.pdf" "newtab" >}}Notebook Visualización{{< /staticref >}}
++ {{< staticref "uploads/fen_finanzasr_102024/ejemplo_pdf/usbp_stats_fy2017_sector_profile.pdf" "newtab" >}}PDF del ejercicio{{< /staticref >}}
 
