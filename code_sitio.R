@@ -36,3 +36,10 @@ blogdown::new_post(title = "Hi Hugo",
 # 
 # rstudioapi::navigateToFile("config.yaml", line = 15)
 
+
+
+### Para editar archivos del curso desde cada carpeta del curso se debe hacer: 
+#G:/Mi unidad/Website/personal_site_final/content/courses
+# Se debe tener los archivos subidos a
+# G:\Mi unidad\Website\personal_site_final\public\uploads
+
