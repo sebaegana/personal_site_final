@@ -66,20 +66,3 @@ Creación: **27-08-2021**
 
 Actualización: **<script> document.write(new Date().toLocaleDateString()); </script>**
 
-<div id="stats"></div>
-
-<script data-goatcounter="https://segana.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-
-<script>
-  var t = setInterval(function() {
-    if (window.goatcounter && window.goatcounter.visit_count) {
-      clearInterval(t);
-      window.goatcounter.visit_count({
-        append: "#stats",           // Where to put the counter
-        no_branding: true,          // Optional: remove "by GoatCounter"
-        style: "div { font-size: 1em; margin-top: 1em; }"
-      });
-    }
-  }, 100);
-</script>
