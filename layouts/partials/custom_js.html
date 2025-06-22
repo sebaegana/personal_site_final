@@ -1,3 +1,21 @@
 {{ if eq hugo.Environment "production" }}
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script data-goatcounter="https://segana.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Replace with your domain and page path
+    const path = window.location.pathname;
+    fetch("https://segana.goatcounter.com/counter/" + encodeURIComponent(path) + ".json")
+      .then(res => res.json())
+      .then(data => {
+        const count = data.count || 0;
+        document.getElementById("view-count").textContent = count.toLocaleString();
+      })
+      .catch(err => {
+        console.error("GoatCounter fetch error:", err);
+        document.getElementById("view-count").textContent = "N/A";
+      });
+  });
+</script>
 {{end}}
