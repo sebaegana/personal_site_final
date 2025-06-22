@@ -4,17 +4,20 @@
         async src="//gc.zgo.at/count.js"></script>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Replace with your domain and page path
+    const el = document.getElementById("view-count");
     const path = window.location.pathname;
+
     fetch("https://segana.goatcounter.com/counter/" + encodeURIComponent(path) + ".json")
-      .then(res => res.json())
-      .then(data => {
-        const count = data.count || 0;
-        document.getElementById("view-count").textContent = count.toLocaleString();
+      .then(response => {
+        if (!response.ok) throw new Error("Network response was not ok");
+        return response.json();
       })
-      .catch(err => {
-        console.error("GoatCounter fetch error:", err);
-        document.getElementById("view-count").textContent = "N/A";
+      .then(data => {
+        el.textContent = data.count.toLocaleString();
+      })
+      .catch(error => {
+        console.error("GoatCounter error:", error);
+        el.textContent = "N/A";
       });
   });
 </script>
