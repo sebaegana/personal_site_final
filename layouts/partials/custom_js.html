@@ -1,24 +1,3 @@
 {{ if eq hugo.Environment "production" }}
   <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <script data-goatcounter="https://segana.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const el = document.getElementById("view-count");
-    const path = window.location.pathname;
-
-    fetch("https://gc.zgo.at/counter/" + encodeURIComponent(path) + ".json?include=ref")
-      .then(response => {
-        if (!response.ok) throw new Error("Network response was not ok");
-        return response.json();
-      })
-      .then(data => {
-        el.textContent = data.count.toLocaleString();
-      })
-      .catch(error => {
-        console.error("GoatCounter fetch error:", error);
-        el.textContent = "0";
-      });
-  });
-</script>>
 {{end}}
