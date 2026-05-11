@@ -1,0 +1,26 @@
+[[main]]
+  name = "Courses"
+  pageRef = "courses"
+  weight = 10
+
+[[main]]
+  name = "Talks"
+  pageRef = "talks"
+  weight = 20
+
+[[main]]
+  name = "Data Projects"
+  pageRef = "data_projects"
+  weight = 30
+
+[[main]]
+  identifier = "github"
+  pre = "github"
+  url = "https://github.com/sebaegana"
+  weight = 100
+
+[[main]]
+  identifier = "linkedin"
+  pre = "linkedin"
+  url = "https://www.linkedin.com/in/sebastian-egana-santibanez/"
+  weight = 110
