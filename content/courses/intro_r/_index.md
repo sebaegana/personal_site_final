@@ -1,4 +1,4 @@
----
+﻿---
 date: "2021-01-24"
 linkTitle: Introducción a R
 summary: Introductory course to R
@@ -9,7 +9,7 @@ type: book
 {{< figure src="featured.jpg" >}}
 
 <!---
-{{< toc hide_on="xl" >}}
+
 -->
 
 ## Course links

@@ -1,0 +1,26 @@
+locale = "en"
+label = "English"
+weight = 1
+title = "Sebastián Egaña Santibáñez"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+  description = "Científico de datos, docente universitario y asesor."
+
+[params.author]
+  name = "Sebastián Egaña Santibáñez"
+  email = "sebaegana@gmail.com"
+  image = "img/avatar.jpg"
+  headline = "Analytics Translator · Docente · Científico de Datos"
+  bio = "Científico de datos, docente universitario y asesor en temas varios."
+  links = [
+    { github = "https://github.com/sebaegana" },
+    { linkedin = "https://www.linkedin.com/in/sebastian-egana-santibanez/" },
+    { x-twitter = "https://twitter.com/sebaegana" },
+    { mastodon = "https://mastodon.social/@segana" },
+    { google-scholar = "https://scholar.google.co.uk/citations?hl=es&user=curBunoAAAAJ" },
+    { envelope = "mailto:sebaegana@gmail.com" },
+  ]

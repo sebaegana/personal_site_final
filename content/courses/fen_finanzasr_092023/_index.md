@@ -1,4 +1,4 @@
----
+﻿---
 date: "2023-09-24"
 linkTitle: Finanzas en R
 summary: Diploma de Ciencias de datos para las finanzas
@@ -9,7 +9,7 @@ type: book
 {{< figure src="hola_2.jpg" >}}
 
 
-{{< toc hide_on="xl" >}}
+
 
 ## Course links
 
@@ -17,56 +17,56 @@ type: book
 
 #### Syllabus
 
-+ {{< staticref "uploads/fen_finanzasr_092023/Finanzas en R - Segana 20230923.pdf" "newtab" >}}Programa{{< /staticref >}}
++ [Programa](/uploads/fen_finanzasr_092023/Finanzas en R - Segana 20230923.pdf)
 
 #### Diapositivas
 
-+ {{< staticref "uploads/fen_finanzasr_092023/clase_01_20230409.pdf" "newtab" >}}Clase 01{{< /staticref >}}
++ [Clase 01](/uploads/fen_finanzasr_092023/clase_01_20230409.pdf)
 
 #### Notebooks 
 
-+ {{< staticref "uploads/fen_finanzasr_092023/notebook_01.pdf" "newtab" >}}Notebook 01{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_092023/notebook_dates.pdf" "newtab" >}}Notebook Fechas{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_092023/notebook_exer_01.pdf" "newtab" >}}Notebook Ejercicios{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_092023/notebook_opciones.pdf" "newtab" >}}Notebook Opciones{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_092023/notebook_regresion.pdf" "newtab" >}}Notebook Regresión{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_092023/notebook_simulacion.pdf" "newtab" >}}Notebook Simulación{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_092023/notebook_visualization.pdf" "newtab" >}}Notebook Visualización{{< /staticref >}}
++ [Notebook 01](/uploads/fen_finanzasr_092023/notebook_01.pdf)
++ [Notebook Fechas](/uploads/fen_finanzasr_092023/notebook_dates.pdf)
++ [Notebook Ejercicios](/uploads/fen_finanzasr_092023/notebook_exer_01.pdf)
++ [Notebook Opciones](/uploads/fen_finanzasr_092023/notebook_opciones.pdf)
++ [Notebook Regresión](/uploads/fen_finanzasr_092023/notebook_regresion.pdf)
++ [Notebook Simulación](/uploads/fen_finanzasr_092023/notebook_simulacion.pdf)
++ [Notebook Visualización](/uploads/fen_finanzasr_092023/notebook_visualization.pdf)
 
 #### Actividades
 
-+ {{< staticref "uploads/fen_finanzasr_092023/actividad_01.pdf" "newtab" >}}Actividad 01{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_092023/actividad_01.xlsx" "newtab" >}}Data actividad 01{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_092023/actividad_02.pdf" "newtab" >}}Actividad 02{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_092023/challenge_01_edit.xlsx" "newtab" >}}Data actividad 02{{< /staticref >}}
++ [Actividad 01](/uploads/fen_finanzasr_092023/actividad_01.pdf)
++ [Data actividad 01](/uploads/fen_finanzasr_092023/actividad_01.xlsx)
++ [Actividad 02](/uploads/fen_finanzasr_092023/actividad_02.pdf)
++ [Data actividad 02](/uploads/fen_finanzasr_092023/challenge_01_edit.xlsx)
 
 #### Entregas
 
-+ {{< staticref "uploads/fen_finanzasr_092023/trabajo_01.pdf" "newtab" >}}Trabajo del curso{{< /staticref >}}
++ [Trabajo del curso](/uploads/fen_finanzasr_092023/trabajo_01.pdf)
 
 #### Otros
 
-+ {{< staticref "uploads/fen_finanzasr_092023/data_visualization.xlsx" "newtab" >}}Data visualización{{< /staticref >}}
++ [Data visualización](/uploads/fen_finanzasr_092023/data_visualization.xlsx)
 
 ### Curso 2024
 
 #### Diapositivas
 
-+ {{< staticref "uploads/fen_finanzasr_102024/notebook_01.pdf" "newtab" >}}Notebook 01{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_102024/notebook_dates.pdf" "newtab" >}}Notebook Fechas{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_102024/notebook_exer_01.pdf" "newtab" >}}Notebook Ejercicios{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_102024/notebook_opciones.pdf" "newtab" >}}Notebook Opciones{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_102024/notebook_regresion.pdf" "newtab" >}}Notebook Regresión{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_102024/notebook_simulacion.pdf" "newtab" >}}Notebook Simulación{{< /staticref >}}
-+ {{< staticref "uploads/fen_finanzasr_102024/notebook_visualization.pdf" "newtab" >}}Notebook Visualización{{< /staticref >}}
++ [Notebook 01](/uploads/fen_finanzasr_102024/notebook_01.pdf)
++ [Notebook Fechas](/uploads/fen_finanzasr_102024/notebook_dates.pdf)
++ [Notebook Ejercicios](/uploads/fen_finanzasr_102024/notebook_exer_01.pdf)
++ [Notebook Opciones](/uploads/fen_finanzasr_102024/notebook_opciones.pdf)
++ [Notebook Regresión](/uploads/fen_finanzasr_102024/notebook_regresion.pdf)
++ [Notebook Simulación](/uploads/fen_finanzasr_102024/notebook_simulacion.pdf)
++ [Notebook Visualización](/uploads/fen_finanzasr_102024/notebook_visualization.pdf)
 
 #### Ejercicios
 
 Scrapping de tablas desde un pdf:
 
-+ {{< staticref "uploads/fen_finanzasr_102024/ejemplo_pdf/read_tables_20240923.R" "newtab" >}}Código en R{{< /staticref >}}
++ [Código en R](/uploads/fen_finanzasr_102024/ejemplo_pdf/read_tables_20240923.R)
 
 Se debe utilizar el siguiente archivo:
 
-+ {{< staticref "uploads/fen_finanzasr_102024/ejemplo_pdf/usbp_stats_fy2017_sector_profile.pdf" "newtab" >}}PDF del ejercicio{{< /staticref >}}
++ [PDF del ejercicio](/uploads/fen_finanzasr_102024/ejemplo_pdf/usbp_stats_fy2017_sector_profile.pdf)
 
