@@ -49,28 +49,28 @@
 
 ## Pasos de la migración
 
-- [ ] **1. Instalar tema Blowfish**
+- [x] **1. Instalar tema Blowfish**
   - Agregar como módulo Hugo (recomendado) o submodule git
   - URL: github.com/nunocoracao/blowfish
   
-- [ ] **2. Reemplazar configuración base**
+- [x] **2. Reemplazar configuración base**
   - Reescribir `config.yaml` para Blowfish (theme, módulos, outputs)
   - Crear/adaptar `config/_default/params.toml` con datos del autor
   - Crear/adaptar `config/_default/menus.toml` con menú actual
   - Crear/adaptar `config/_default/languages.toml`
 
-- [ ] **3. Crear perfil del autor en formato Blowfish**
+- [x] **3. Crear perfil del autor en formato Blowfish**
   - `content/authors/admin/_index.md` → nuevo formato Blowfish
   
-- [ ] **4. Migrar contenido por sección**
+- [x] **4. Migrar contenido por sección**
   - Cursos (estructura de directorio se mantiene, frontmatter puede cambiar)
   - Posts, talks, data_projects, publicaciones
   
-- [ ] **5. Copiar assets estáticos**
+- [x] **5. Copiar assets estáticos**
   - Carpeta `static/uploads/` (PDFs, slides, etc.)
   - Foto de perfil / avatar
   
-- [ ] **6. Probar build local**
+- [x] **6. Probar build local**
   - `hugo server` y verificar que renderiza correctamente
   
 - [ ] **7. Ajustes visuales**
